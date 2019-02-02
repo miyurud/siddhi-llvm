@@ -7,7 +7,7 @@
 #include "SiddhiqlParser.h"
 #include "SiddhiqlBaseListener.h"
 #include "SiddhiqlBaseVisitor.h"
-
+#include "DefinitionStream.h"
 class TranslatorVisitor : SiddhiqlBaseVisitor{
 public:
     virtual antlrcpp::Any visitApp_annotation(SiddhiqlParser::App_annotationContext *ctx) override;
@@ -16,6 +16,8 @@ public:
     virtual antlrcpp::Any visitDefinition_stream(SiddhiqlParser::Definition_streamContext *ctx) override;
     SiddhiqlParser::App_annotationContext *app_annotationContext;
     std :: string appName;
+    std :: string querySourceName;
+    std :: list<DefinitionStream> definitionStreams;
 };
 
 

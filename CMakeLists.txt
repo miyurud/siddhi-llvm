@@ -4,7 +4,7 @@ project(Stream_Processor)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Stream_Processor main.cpp generated/SiddhiqlBaseListener.cpp generated/SiddhiqlLexer.cpp generated/SiddhiqlListener.cpp
-        generated/SiddhiqlParser.cpp src/Translator.cpp src/LLVM_IR_Strings.cpp generated/SiddhiqlBaseVisitor.cpp generated/SiddhiqlVisitor.cpp src/TranslatorVisitor.cpp)
+        generated/SiddhiqlParser.cpp src/Translator.cpp src/LLVM_IR_Strings.cpp generated/SiddhiqlBaseVisitor.cpp generated/SiddhiqlVisitor.cpp src/TranslatorVisitor.cpp src/DefinitionStream.cpp)
 
 include_directories(
         ${PROJECT_SOURCE_DIR}/generated
