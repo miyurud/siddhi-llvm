@@ -33,5 +33,8 @@ int main ( int argc, const char *args[]){
     cout << "\n visiting starts \n";
     SiddhiqlParser :: Siddhi_appContext * visitTree = parser1.siddhi_app();
     translatorVisitor.visitSiddhi_app(visitTree);
+
+    std::cout << "AppName : " << translatorVisitor.appName;
+    std::cout << "Annotation : " << translatorVisitor.definitionStreams[1].annotation.getName();
     return 0;
 }

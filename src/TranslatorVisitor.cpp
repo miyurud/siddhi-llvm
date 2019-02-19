@@ -14,12 +14,12 @@ antlrcpp::Any TranslatorVisitor::visitApp_annotation(SiddhiqlParser::App_annotat
 
 }
 
-antlrcpp::Any TranslatorVisitor::visitName(SiddhiqlParser::NameContext *ctx) {
-    std :: cout << "\nvisit name. \n";
-
-    //return 0;
-    return 0;
-}
+//antlrcpp::Any TranslatorVisitor::visitName(SiddhiqlParser::NameContext *ctx) {
+//    std :: cout << "\nvisit name. \n";
+//
+//    //return 0;
+//    return 0;
+//}
 
 antlrcpp::Any TranslatorVisitor::visitSiddhi_app(SiddhiqlParser::Siddhi_appContext *ctx) {
     std :: cout << "\nvisit siddhi app. \n";
@@ -27,13 +27,34 @@ antlrcpp::Any TranslatorVisitor::visitSiddhi_app(SiddhiqlParser::Siddhi_appConte
 }
 
 antlrcpp::Any TranslatorVisitor :: visitDefinition_stream(SiddhiqlParser::Definition_streamContext *ctx){
-    std :: cout << "\nvisit visitDefinition_stream. \n";
-    TranslatorVisitor::querySourceName = ctx->source()->stream_id()->name()->id()->getText();
+    std :: cout << "\nvisit visitDefinition_stream. \n" << "annotation : " << ctx->annotation().size();
     DefinitionStream definitionStream;
-    for (int i = 0; i < ctx->attribute_name().size(); ++i) {
+    if(ctx->annotation().size() > 0){
+        definitionStream.setAnnotation(createAnnotation(ctx->annotation(0)));
+    }
+    definitionStream.setSource(ctx->source()->stream_id()->name()->id()->getText());
+    for (int i = 0; i < ctx->attribute_name().size(); i++) {
         std::cout << ctx->attribute_name(i)->getText() << "\n";
-        definitionStream.parameters[ctx->attribute_name(i)->getText()] = ctx->attribute_type(i)->getText();
+        definitionStream.addParam(ctx->attribute_name(i)->getText(),ctx->attribute_type(i)->getText());
     }
     definitionStreams.push_back(definitionStream);
     return 0;
+}
+
+antlrcpp::Any TranslatorVisitor::visitExecution_element(SiddhiqlParser::Execution_elementContext *ctx){
+    Annotation annotation;
+    if(ctx->query()->annotation().size() > 0){
+        annotation = createAnnotation(ctx->query()->annotation(0));
+        executionElement.prepareExecutionElement(annotation, ctx->query());
+    }
+    executionElement.prepareExecutionElement(annotation, ctx->query());
+}
+
+Annotation TranslatorVisitor::createAnnotation(SiddhiqlParser::AnnotationContext *ctx){
+    Annotation annotation;
+    annotation.setName(ctx->name()->getText());
+    for (int i = 0; i < ctx->annotation_element().size(); i++) {
+        annotation.addAnnotationElement(ctx->annotation_element(i)->property_name()->name(0)->id()->getText(), ctx->annotation_element(i)->property_value()->string_value()->getText());
+    }
+    return annotation;
 }
