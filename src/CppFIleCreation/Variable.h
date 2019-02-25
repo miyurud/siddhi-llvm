@@ -10,12 +10,25 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-	//import org.wso2.siddhi.query.compiler.exception.SiddhiParserException;
+
+//
+// Created by tharsanan on 2/23/19.
+//
+
+#ifndef STREAM_PROCESSOR_VARIABLE_H
+#define STREAM_PROCESSOR_VARIABLE_H
+
+#include <string>
+#include <vector>
+
+using namespace std;
+class Variable {
+public:
+    string dataType;
+    string identifier;
+    vector<string> lines;
+
+};
 
 
-// Generated from Siddhiql.g4 by ANTLR 4.7.1
-
-
-#include "SiddhiqlListener.h"
-
-
+#endif //STREAM_PROCESSOR_VARIABLE_H

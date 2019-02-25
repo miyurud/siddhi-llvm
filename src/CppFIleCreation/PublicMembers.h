@@ -10,12 +10,26 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-	//import org.wso2.siddhi.query.compiler.exception.SiddhiParserException;
+
+//
+// Created by tharsanan on 2/23/19.
+//
+
+#ifndef STREAM_PROCESSOR_PUBLICMEMBERS_H
+#define STREAM_PROCESSOR_PUBLICMEMBERS_H
+
+#include <vector>
+#include "Method.h"
+#include "Variable.h"
+
+using namespace std;
+class PublicMembers {
+public:
+    vector<Method> publicMethods;
+    vector<Variable> publicVariables;
+    vector<string> methodLines;
+    vector<string> variableLines;
+};
 
 
-// Generated from Siddhiql.g4 by ANTLR 4.7.1
-
-
-#include "SiddhiqlListener.h"
-
-
+#endif //STREAM_PROCESSOR_PUBLICMEMBERS_H

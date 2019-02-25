@@ -1,3 +1,16 @@
+/**
+Copyright 2019 Siddhi-LLVM Team
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 //
 // Created by tharsanan on 2/1/19.
 //
@@ -14,12 +27,6 @@ antlrcpp::Any TranslatorVisitor::visitApp_annotation(SiddhiqlParser::App_annotat
 
 }
 
-//antlrcpp::Any TranslatorVisitor::visitName(SiddhiqlParser::NameContext *ctx) {
-//    std :: cout << "\nvisit name. \n";
-//
-//    //return 0;
-//    return 0;
-//}
 
 antlrcpp::Any TranslatorVisitor::visitSiddhi_app(SiddhiqlParser::Siddhi_appContext *ctx) {
     std :: cout << "\nvisit siddhi app. \n";
@@ -37,17 +44,22 @@ antlrcpp::Any TranslatorVisitor :: visitDefinition_stream(SiddhiqlParser::Defini
         std::cout << ctx->attribute_name(i)->getText() << "\n";
         definitionStream.addParam(ctx->attribute_name(i)->getText(),ctx->attribute_type(i)->getText());
     }
+
     definitionStreams.push_back(definitionStream);
+    definitionStream.finalizeDefinitionStream();
     return 0;
 }
 
 antlrcpp::Any TranslatorVisitor::visitExecution_element(SiddhiqlParser::Execution_elementContext *ctx){
     Annotation annotation;
+    std::cout << "entering execution element";
     if(ctx->query()->annotation().size() > 0){
         annotation = createAnnotation(ctx->query()->annotation(0));
         executionElement.prepareExecutionElement(annotation, ctx->query());
     }
-    executionElement.prepareExecutionElement(annotation, ctx->query());
+    else {
+        executionElement.prepareExecutionElement(annotation, ctx->query());
+    }
 }
 
 Annotation TranslatorVisitor::createAnnotation(SiddhiqlParser::AnnotationContext *ctx){
