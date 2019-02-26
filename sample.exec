@@ -1,7 +1,7 @@
 @App:name("HelloWorldApp")
 define stream CargoStream (weight int, roomNo int, temp double);
 @sink(type='log', prefix='LOGGER')
-define stream OutputStream(weight int, totalWeight long);
+define stream OutputStream (weight int, totalWeight long);
 @info(name='HelloWorldQuery')
 from CargoStream
 select weight, sum(weight) as totalWeight

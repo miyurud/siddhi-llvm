@@ -12,23 +12,32 @@ limitations under the License.
 */
 
 //
-// Created by tharsanan on 1/31/19.
+// Created by tharsanan on 2/23/19.
 //
 
-#ifndef STREAM_PROCESSOR_LLVM_IR_STRINGS_H
-#define STREAM_PROCESSOR_LLVM_IR_STRINGS_H
+#ifndef STREAM_PROCESSOR_CLASSCREATOR_H
+#define STREAM_PROCESSOR_CLASSCREATOR_H
+
+#include "Include.h"
+#include "PublicMembers.h"
 #include <string>
 
-class LLVM_IR_Strings {
+using namespace std;
+
+class ClassCreator {
 public:
-    static const std::string GLOBAL;
-    static const std::string INT32;
-    static const std::string INT8;
-    static const std::string INT16;
-    static const std::string ADD;
-    static const std::string INTERNAL;
-    static const std::string CONSTANT;
+    Include include;
+    PublicMembers publicMembers;
+    string headerSrc;
+    string cppSrc;
+    string className;
+    vector<string> lines;
+    void prepareIncludeLines();
+    void preparePublicMethodLines();
+    void preparePublicVariableLines();
+    string createHeaderSource();
+    void createHeaderFile();
 };
 
 
-#endif //STREAM_PROCESSOR_LLVM_IR_STRINGS_H
+#endif //STREAM_PROCESSOR_CLASSCREATOR_H
