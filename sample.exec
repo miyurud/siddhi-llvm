@@ -4,5 +4,5 @@ define stream CargoStream (weight int, roomNo int, temp double);
 define stream OutputStream (weight int, totalWeight long);
 @info(name='HelloWorldQuery')
 from CargoStream
-select weight, sum(weight) as totalWeight
+select weight, sum(sum(weight)) as totalWeight
 insert into OutputStream;

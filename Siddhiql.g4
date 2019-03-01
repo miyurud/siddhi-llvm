@@ -458,19 +458,19 @@ expression
 
 
 math_operation
-    :'('math_operation')'                         #basic_math_operation
-    |null_check                                   #basic_math_operation
-    |NOT math_operation                           #not_math_operation
-    |math_operation (multiply='*'|devide='/'|mod='%') math_operation    #multiplication_math_operation
-    |math_operation (add='+'|substract='-') math_operation              #addition_math_operation
-    |math_operation (gt_eq='>='|lt_eq='<='|gt='>'|lt='<') math_operation #greaterthan_lessthan_math_operation
-    |math_operation (eq='=='|not_equal='!=') math_operation                #equality_math_operation
-    |math_operation IN name                       #in_math_operation
-    |math_operation AND math_operation            #and_math_operation
-    |math_operation OR math_operation             #or_math_operation
-    |function_operation                           #basic_math_operation
-    |constant_value                               #basic_math_operation
-    |attribute_reference                          #basic_math_operation
+    :'('math_operation')'                         //#basic_math_operation
+    |null_check                                   //#basic_math_operation
+    |NOT math_operation                           //#not_math_operation
+    |math_operation (multiply='*'|devide='/'|mod='%') math_operation    //#multiplication_math_operation
+    |math_operation (add='+'|substract='-') math_operation              //#addition_math_operation
+    |math_operation (gt_eq='>='|lt_eq='<='|gt='>'|lt='<') math_operation //#greaterthan_lessthan_math_operation
+    |math_operation (eq='=='|not_equal='!=') math_operation                //#equality_math_operation
+    |math_operation IN name                       //#in_math_operation
+    |math_operation AND math_operation            //#and_math_operation
+    |math_operation OR math_operation             //#or_math_operation
+    |function_operation                           //#basic_math_operation
+    |constant_value                               //#basic_math_operation
+    |attribute_reference                          //#basic_math_operation
     ;
 
 function_operation

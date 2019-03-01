@@ -73,7 +73,36 @@ string ClassCreator::createHeaderSource(){
 }
 
 void ClassCreator::createHeaderFile(){
-    ofstream headerFile("out/"+className + ".h");
+    ofstream headerFile(className + ".h");
     headerFile << headerSrc;
+    headerFile.close();
+}
+
+string ClassCreator::createCppSource() {
+    cppSrc += "#include " + string("\"") + className + ".h" + string("\"\n");
+    for (int i = 0; i < publicMembers.publicMethods.size(); i++) {
+        Method method = publicMembers.publicMethods[i];
+        cppSrc += method.returnType  + " " + className + "::" + method.identifier + "(";
+        bool flag = false;
+        for( auto const& x : method.params )
+        {
+            cppSrc +=  x.first + " " + x.second + ",";
+            flag = true;
+        }
+        if(flag){
+            cppSrc += cppSrc.substr(0, cppSrc.size()-1);
+        }
+        cppSrc += "){\n";
+        for (int j = 0; j < method.lines.size(); ++j) {
+            cppSrc += method.lines[j] + "\n";
+        }
+        cppSrc += "}\n";
+    }
+    createCppFile();
+}
+
+void ClassCreator::createCppFile(){
+    ofstream headerFile(className + ".cpp");
+    headerFile << cppSrc;
     headerFile.close();
 }

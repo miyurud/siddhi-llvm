@@ -16,6 +16,9 @@ limitations under the License.
 //
 
 #include "TranslatorVisitor.h"
+
+std :: vector<DefinitionStream> TranslatorVisitor::definitionStreams;
+
 antlrcpp::Any TranslatorVisitor::visitApp_annotation(SiddhiqlParser::App_annotationContext *ctx) {
     std :: cout << "\nvisit app annotation. \n";
     TranslatorVisitor :: app_annotationContext = ctx;

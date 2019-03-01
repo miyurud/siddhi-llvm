@@ -27,7 +27,7 @@ public:
     string dataType;
     string identifier;
     vector<string> lines;
-
+    void setIdentifier(string s);
 };
 
 

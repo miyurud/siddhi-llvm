@@ -19,6 +19,7 @@ limitations under the License.
 #define STREAM_PROCESSOR_EXECUTIONELEMENT_H
 
 
+#include <CppFIleCreation/ClassCreator.h>
 #include "Annotation.h"
 
 class ExecutionElement {
@@ -31,11 +32,13 @@ public:
     void executeQuery_output(SiddhiqlParser::Query_outputContext *ctx);
     void executeQuery_section(SiddhiqlParser::Query_sectionContext *ctx);
     void setOutputSourceName(string outName);
+    string resolveMathOperation(SiddhiqlParser::Math_operationContext *ctx, int i, int count, string returnType);
     string getInputSourceName();
     string getOutputSourceName();
     Annotation getAnnotation();
     string inputSourceName;
     string outputSourceName;
+    ClassCreator executionHeader;
 };
 
 

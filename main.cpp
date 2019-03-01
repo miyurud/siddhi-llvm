@@ -26,7 +26,7 @@ using namespace std;
 
 int main ( int argc, const char *args[]){
     ifstream stream;
-    stream.open("/home/tharsanan/Tharsanan/FYP/Stream-Processor/sample.exec");
+    stream.open("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/sample.exec");
     ANTLRInputStream input(stream);
     SiddhiqlLexer lexer(&input);
     CommonTokenStream tokens(&lexer);
@@ -36,7 +36,7 @@ int main ( int argc, const char *args[]){
     Translator listener;
 
     ifstream stream1;
-    stream1.open("/home/tharsanan/Tharsanan/FYP/Stream-Processor/sample.exec");
+    stream1.open("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/sample.exec");
     ANTLRInputStream input1(stream1);
     SiddhiqlLexer lexer1(&input1);
     CommonTokenStream tokens1(&lexer1);
@@ -47,6 +47,6 @@ int main ( int argc, const char *args[]){
     translatorVisitor.visitSiddhi_app(visitTree);
 
     std::cout << "AppName : " << translatorVisitor.appName;
-    std::cout << "Annotation : " << translatorVisitor.definitionStreams[1].annotation.getName();
+    std::cout << "Annotation : " << TranslatorVisitor::definitionStreams[1].annotation.getName();
     return 0;
 }

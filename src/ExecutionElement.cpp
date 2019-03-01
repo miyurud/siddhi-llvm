@@ -17,6 +17,8 @@ limitations under the License.
 
 #include <SiddhiqlParser.h>
 #include "ExecutionElement.h"
+#include "TranslatorVisitor.h"
+
 void ExecutionElement::setAnnotation(Annotation annotation1){
     annotation = annotation1;
 }
@@ -42,10 +44,14 @@ void ExecutionElement::setOutputSourceName(string outName) {
 }
 
 void ExecutionElement::prepareExecutionElement(Annotation annotation1, SiddhiqlParser::QueryContext *ctx){
+    executionHeader.className = "Execution";
     annotation = annotation1;
     executeQuery_input(ctx->query_input());
     executeQuery_output(ctx->query_output());
     executeQuery_section(ctx->query_section());
+    executionHeader.createHeaderSource();
+    executionHeader.createCppSource();
+
 }
 
 void ExecutionElement::executeQuery_input(SiddhiqlParser::Query_inputContext *ctx){
@@ -63,8 +69,57 @@ void ExecutionElement::executeQuery_output(SiddhiqlParser::Query_outputContext *
 }
 
 void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext *ctx){
-    for (int i = 0; i < ctx->output_attribute().size(); ++i) {
+    for (int i = 0; i < ctx->output_attribute().size(); i++) {
+        Method methodForSetReference;
+        Variable inVariable;
+        inVariable.setIdentifier("inputSourceName");
+//        inVariable.dataType = inputSourceName;
+        Variable outVariable;
+//        outVariable.identifier = "outputSourceName";
+//        outVariable.dataType = outputSourceName;
+        executionHeader.publicMembers.publicVariables.push_back(inVariable);
+        executionHeader.publicMembers.publicVariables.push_back(outVariable);
+        methodForSetReference.identifier = "execute";
+        if(ctx->output_attribute(i)->attribute_reference()){
+            methodForSetReference.returnType = "void";
+            string referenceName =
+                    ctx->output_attribute(i)->attribute_reference()->attribute_name()->name()->id()->getText();
+            executionHeader.publicMembers.publicMethods.push_back(methodForSetReference);
+            methodForSetReference.addLine("outputSourceName." + referenceName + " = " + "inputSourceName." + referenceName);
 
+        }
+        else{
+            string returnType = "";
+            for (int j = 0; j < TranslatorVisitor::definitionStreams.size(); j++) {
+                if(TranslatorVisitor::definitionStreams[j].parameters.find(ctx->output_attribute(i)->attribute_name()
+                ->name()->id()->getText())!=TranslatorVisitor::definitionStreams[j].parameters.end()){
+                    string string1 = TranslatorVisitor::definitionStreams[j].parameters.find(ctx->output_attribute(i)
+                            ->attribute_name()->name()->id()->getText())->second;
+                    returnType = string1;
+                }
+            }
+            string methodName = resolveMathOperation(ctx->output_attribute(i)->attribute()->math_operation(), i, 0, returnType);
+            methodForSetReference.addLine("outputSourceName." + ctx->output_attribute(i)->attribute_name()
+                                                                        ->name()->id()->getText() + " = " + methodName);
+        }
     }
 }
 
+string ExecutionElement::resolveMathOperation(SiddhiqlParser::Math_operationContext *ctx, int i, int count, string returnType){
+    if(ctx->function_operation()){
+        Method method;
+        method.identifier = ctx->function_operation()->function_id()->name()->id()->getText() + "_" + to_string(i) + "_"
+                + to_string(count);
+        count += 1;
+        method.returnType = returnType;
+        method.addLine("");
+        executionHeader.publicMembers.publicMethods.push_back(method);
+        for (int j = 0; j < ctx->function_operation()->attribute_list()->attribute().size(); j++) {
+            if(ctx->function_operation()->attribute_list()->attribute()[j]->math_operation()){
+                resolveMathOperation(ctx->function_operation()->attribute_list()->attribute()[j]->math_operation(),i,
+                        count, returnType);
+            }
+        }
+        return method.identifier;
+    }
+}

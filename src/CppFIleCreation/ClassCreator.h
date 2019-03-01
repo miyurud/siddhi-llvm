@@ -36,7 +36,9 @@ public:
     void preparePublicMethodLines();
     void preparePublicVariableLines();
     string createHeaderSource();
+    string createCppSource();
     void createHeaderFile();
+    void createCppFile();
 };
 
 

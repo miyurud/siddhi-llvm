@@ -31,7 +31,9 @@ public:
     vector<string> lines;
     static Method createSetterMethod(string variableName,  string variableType);
     static Method createGetterMethod(string variableName, string variableType);
-
+    void addSetterLines(string variableName);
+    void addGetterLines(string variableName);
+    void addLine(string line);
 };
 
 

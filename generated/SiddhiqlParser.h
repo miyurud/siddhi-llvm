@@ -1,15 +1,3 @@
-/**
-Copyright 2019 Siddhi-LLVM Team
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 
 	//import org.wso2.siddhi.query.compiler.exception.SiddhiParserException;
 
@@ -1964,140 +1952,36 @@ public:
 
   class  Math_operationContext : public antlr4::ParserRuleContext {
   public:
+    antlr4::Token *multiply = nullptr;;
+    antlr4::Token *devide = nullptr;;
+    antlr4::Token *mod = nullptr;;
+    antlr4::Token *add = nullptr;;
+    antlr4::Token *substract = nullptr;;
+    antlr4::Token *gt_eq = nullptr;;
+    antlr4::Token *lt_eq = nullptr;;
+    antlr4::Token *gt = nullptr;;
+    antlr4::Token *lt = nullptr;;
+    antlr4::Token *eq = nullptr;;
+    antlr4::Token *not_equal = nullptr;;
     Math_operationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-   
-    Math_operationContext() : antlr4::ParserRuleContext() { }
-    void copyFrom(Math_operationContext *context);
-    using antlr4::ParserRuleContext::copyFrom;
-
     virtual size_t getRuleIndex() const override;
-
-   
-  };
-
-  class  Multiplication_math_operationContext : public Math_operationContext {
-  public:
-    Multiplication_math_operationContext(Math_operationContext *ctx);
-
-    antlr4::Token *multiply = nullptr;
-    antlr4::Token *devide = nullptr;
-    antlr4::Token *mod = nullptr;
     std::vector<Math_operationContext *> math_operation();
     Math_operationContext* math_operation(size_t i);
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  Greaterthan_lessthan_math_operationContext : public Math_operationContext {
-  public:
-    Greaterthan_lessthan_math_operationContext(Math_operationContext *ctx);
-
-    antlr4::Token *gt_eq = nullptr;
-    antlr4::Token *lt_eq = nullptr;
-    antlr4::Token *gt = nullptr;
-    antlr4::Token *lt = nullptr;
-    std::vector<Math_operationContext *> math_operation();
-    Math_operationContext* math_operation(size_t i);
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  Basic_math_operationContext : public Math_operationContext {
-  public:
-    Basic_math_operationContext(Math_operationContext *ctx);
-
-    Math_operationContext *math_operation();
     Null_checkContext *null_check();
+    antlr4::tree::TerminalNode *NOT();
     Function_operationContext *function_operation();
     Constant_valueContext *constant_value();
     Attribute_referenceContext *attribute_reference();
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  In_math_operationContext : public Math_operationContext {
-  public:
-    In_math_operationContext(Math_operationContext *ctx);
-
-    Math_operationContext *math_operation();
+    antlr4::tree::TerminalNode *AND();
+    antlr4::tree::TerminalNode *OR();
     antlr4::tree::TerminalNode *IN();
     NameContext *name();
+
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  Addition_math_operationContext : public Math_operationContext {
-  public:
-    Addition_math_operationContext(Math_operationContext *ctx);
-
-    antlr4::Token *add = nullptr;
-    antlr4::Token *substract = nullptr;
-    std::vector<Math_operationContext *> math_operation();
-    Math_operationContext* math_operation(size_t i);
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  And_math_operationContext : public Math_operationContext {
-  public:
-    And_math_operationContext(Math_operationContext *ctx);
-
-    std::vector<Math_operationContext *> math_operation();
-    Math_operationContext* math_operation(size_t i);
-    antlr4::tree::TerminalNode *AND();
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  Or_math_operationContext : public Math_operationContext {
-  public:
-    Or_math_operationContext(Math_operationContext *ctx);
-
-    std::vector<Math_operationContext *> math_operation();
-    Math_operationContext* math_operation(size_t i);
-    antlr4::tree::TerminalNode *OR();
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  Equality_math_operationContext : public Math_operationContext {
-  public:
-    Equality_math_operationContext(Math_operationContext *ctx);
-
-    antlr4::Token *eq = nullptr;
-    antlr4::Token *not_equal = nullptr;
-    std::vector<Math_operationContext *> math_operation();
-    Math_operationContext* math_operation(size_t i);
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  Not_math_operationContext : public Math_operationContext {
-  public:
-    Not_math_operationContext(Math_operationContext *ctx);
-
-    antlr4::tree::TerminalNode *NOT();
-    Math_operationContext *math_operation();
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
   };
 
   Math_operationContext* math_operation();
