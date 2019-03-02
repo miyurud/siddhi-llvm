@@ -27,6 +27,13 @@ void DefinitionStream::addParam(string name, string type) {
     classCreator.publicMembers.publicVariables.push_back(variable);
     classCreator.publicMembers.publicMethods.push_back(Method::createGetterMethod(name,type));
     classCreator.publicMembers.publicMethods.push_back(Method::createSetterMethod(name,type));
+    name[0] = toupper(name[0]); // this line has problem of type change for example int and long. need to redisgn later for better campatibility.
+    Variable variable1;
+    variable1.identifier = "sum"+name;
+    variable1.dataType = type;
+    classCreator.publicMembers.publicVariables.push_back(variable1);
+    classCreator.publicMembers.publicMethods.push_back(Method::createGetterMethod("sum" + name,type));
+    classCreator.publicMembers.publicMethods.push_back(Method::createSetterMethod("sum" + name,type));
 
 }
 
@@ -52,6 +59,6 @@ void DefinitionStream::setSource(string sourceM) {
 }
 
 void DefinitionStream::finalizeDefinitionStream(){
-    string ss = classCreator.createHeaderSource();
-    std::cout << ss;
+    classCreator.createHeaderSource();
+    classCreator.createCppSource();
 }

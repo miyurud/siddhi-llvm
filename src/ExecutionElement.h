@@ -21,7 +21,7 @@ limitations under the License.
 
 #include <CppFIleCreation/ClassCreator.h>
 #include "Annotation.h"
-
+#include <CppFIleCreation/FunctionCreation.h>
 class ExecutionElement {
 public:
     Annotation annotation;
@@ -39,6 +39,7 @@ public:
     string inputSourceName;
     string outputSourceName;
     ClassCreator executionHeader;
+    vector<string> created_attribute_refs;
 };
 
 

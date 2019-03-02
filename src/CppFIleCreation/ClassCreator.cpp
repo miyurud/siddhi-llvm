@@ -90,7 +90,7 @@ string ClassCreator::createCppSource() {
             flag = true;
         }
         if(flag){
-            cppSrc += cppSrc.substr(0, cppSrc.size()-1);
+            cppSrc = cppSrc.substr(0, cppSrc.size()-1);
         }
         cppSrc += "){\n";
         for (int j = 0; j < method.lines.size(); ++j) {
@@ -99,10 +99,11 @@ string ClassCreator::createCppSource() {
         cppSrc += "}\n";
     }
     createCppFile();
+    return cppSrc;
 }
 
 void ClassCreator::createCppFile(){
-    ofstream headerFile(className + ".cpp");
-    headerFile << cppSrc;
-    headerFile.close();
+    ofstream headerFile1(className + ".cpp");
+    headerFile1 << cppSrc;
+    headerFile1.close();
 }

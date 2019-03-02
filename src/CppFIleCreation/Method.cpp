@@ -24,6 +24,11 @@ Method Method::createSetterMethod(string variableName, string variableType){
     methodName[0] = toupper(methodName[0]);
     method.identifier = "set"+methodName;
     method.params.insert(pair<string,string>(variableType,variableName+"M"));
+    if(variableName.substr(0,3) != "sum"){
+        string variableNameCap = variableName;
+        variableNameCap[0] = toupper(variableName[0]);
+        method.addLine("\tsum" + variableNameCap + " += " + variableName + ";");
+    }
     method.addSetterLines(variableName);
     return method;
 }
