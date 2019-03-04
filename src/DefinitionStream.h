@@ -45,6 +45,10 @@ public:
     Annotation annotation;
 
     std::string source;
+
+    bool isInputSource;
+
+    bool isOutputSource;
 };
 
 

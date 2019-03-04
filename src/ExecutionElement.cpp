@@ -18,6 +18,7 @@ limitations under the License.
 #include <SiddhiqlParser.h>
 #include "ExecutionElement.h"
 #include "TranslatorVisitor.h"
+#include "FileReader.h"
 
 void ExecutionElement::setAnnotation(Annotation annotation1){
     annotation = annotation1;
@@ -57,6 +58,13 @@ void ExecutionElement::prepareExecutionElement(Annotation annotation1, SiddhiqlP
 void ExecutionElement::executeQuery_input(SiddhiqlParser::Query_inputContext *ctx){
     if(ctx->standard_stream()){
         inputSourceName = ctx->standard_stream()->source()->stream_id()->name()->id()->getText();
+        for (int i = 0; i < TranslatorVisitor::definitionStreams.size(); i++) {
+            if(TranslatorVisitor::definitionStreams[i].getSource() == inputSourceName){
+                TranslatorVisitor::definitionStreams[i].isInputSource = true;
+                FileReader fileReader;
+                fileReader.createFile(inputSourceName);
+            }
+        }
     }
     // need to implement methods for other input types like anonymous types
 
@@ -65,6 +73,11 @@ void ExecutionElement::executeQuery_input(SiddhiqlParser::Query_inputContext *ct
 void ExecutionElement::executeQuery_output(SiddhiqlParser::Query_outputContext *ctx){
     if(ctx->INSERT()){
         setOutputSourceName(ctx->target()->source()->stream_id()->name()->id()->getText());
+        for (int i = 0; i < TranslatorVisitor::definitionStreams.size(); i++) {
+            if(TranslatorVisitor::definitionStreams[i].getSource() == outputSourceName){
+                TranslatorVisitor::definitionStreams[i].isOutputSource = true;
+            }
+        }
     }
 }
 
@@ -103,7 +116,7 @@ void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext
             string attributeReferenceLow = attributeReferenceCap;
             attributeReferenceLow[0] = tolower(attributeReferenceCap[0]);
             method.params.insert(pair<string,string>(attributeReferenceLow + "M",returnType));
-            method.addLine("\tinputSource.set" + attributeReferenceCap + "(" + returnType + attributeReferenceLow + "M" + ");");
+            method.addLine("\tinputSource.set" + attributeReferenceCap + "(" + attributeReferenceLow + "M" + ");");
             method.addLine("\texecute();");
             executionHeader.publicMembers.publicMethods.push_back(method);
             created_attribute_refs.push_back(attributeReferenceLow);
@@ -164,7 +177,7 @@ string ExecutionElement::resolveMathOperation(SiddhiqlParser::Math_operationCont
             attributeReferenceLow[0] = tolower(attributeReferenceCap[0]);
             method1.params.insert(pair<string, string>(attributeReferenceLow + "M", returnType));
             method1.addLine(
-                    "\tinputSource.set" + attributeReferenceCap + "(" + returnType + attributeReferenceLow + "M" +
+                    "\tinputSource.set" + attributeReferenceCap + "(" + attributeReferenceLow + "M" +
                     ");");
             method1.addLine("\texecute();");
             executionHeader.publicMembers.publicMethods.push_back(method1);

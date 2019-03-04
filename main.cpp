@@ -31,7 +31,14 @@ int main ( int argc, const char *args[]){
     SiddhiqlLexer lexer(&input);
     CommonTokenStream tokens(&lexer);
     SiddhiqlParser parser(&tokens);
-
+    string a;
+    std::ifstream infile("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/LICENSE");
+    char str[255];
+    while (infile >> a )
+    {
+        cout << a <<"\n";
+        // process pair (a,b)
+    }
     tree::ParseTree *Tree = parser.siddhi_app();
     Translator listener;
 

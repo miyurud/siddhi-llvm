@@ -103,7 +103,7 @@ string ClassCreator::createCppSource() {
 }
 
 void ClassCreator::createCppFile(){
-    ofstream headerFile1(className + ".cpp");
+    ofstream headerFile1("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/Genersted_SP/" + className + ".cpp");
     headerFile1 << cppSrc;
     headerFile1.close();
 }
