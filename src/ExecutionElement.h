@@ -39,6 +39,8 @@ public:
     string inputSourceName;
     string outputSourceName;
     ClassCreator executionHeader;
+    ClassCreator mainFile;
+    Method mainMethod;
     vector<string> created_attribute_refs;
 };
 

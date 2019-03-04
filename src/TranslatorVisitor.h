@@ -31,9 +31,10 @@ public:
 
     SiddhiqlParser::App_annotationContext *app_annotationContext;
     std :: string appName;
-    static std :: vector<DefinitionStream> definitionStreams;
+    static vector<DefinitionStream> definitionStreams;
     ExecutionElement executionElement;
     Annotation createAnnotation(SiddhiqlParser::AnnotationContext *ctx );
+    static vector<string> commonIncludes;
 };
 
 

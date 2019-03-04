@@ -52,17 +52,29 @@ void ExecutionElement::prepareExecutionElement(Annotation annotation1, SiddhiqlP
     executeQuery_section(ctx->query_section());
     executionHeader.createHeaderSource();
     executionHeader.createCppSource();
-
+    mainFile.className = "main";
+    mainMethod.identifier = "main";
+    mainMethod.returnType = "int";
+    mainFile.publicMembers.publicMethods.push_back(mainMethod);
+    mainFile.createCppSource();
+    for (DefinitionStream ds : TranslatorVisitor::definitionStreams){
+        ds.finalizeDefinitionStream();
+    }
 }
 
 void ExecutionElement::executeQuery_input(SiddhiqlParser::Query_inputContext *ctx){
     if(ctx->standard_stream()){
         inputSourceName = ctx->standard_stream()->source()->stream_id()->name()->id()->getText();
+        executionHeader.include.includes.push_back(inputSourceName + ".h");
         for (int i = 0; i < TranslatorVisitor::definitionStreams.size(); i++) {
             if(TranslatorVisitor::definitionStreams[i].getSource() == inputSourceName){
                 TranslatorVisitor::definitionStreams[i].isInputSource = true;
+                TranslatorVisitor::definitionStreams[i].isOutputSource = false;
                 FileReader fileReader;
                 fileReader.createFile(inputSourceName);
+                mainFile.include.includes.push_back("FileReader.h");
+                mainMethod.addLine("FileReader fileReader;\n");
+                mainMethod.addLine("fileReader.readFileAndFeedData();");
             }
         }
     }
@@ -73,11 +85,15 @@ void ExecutionElement::executeQuery_input(SiddhiqlParser::Query_inputContext *ct
 void ExecutionElement::executeQuery_output(SiddhiqlParser::Query_outputContext *ctx){
     if(ctx->INSERT()){
         setOutputSourceName(ctx->target()->source()->stream_id()->name()->id()->getText());
+        executionHeader.include.includes.push_back(outputSourceName + ".h");
         for (int i = 0; i < TranslatorVisitor::definitionStreams.size(); i++) {
             if(TranslatorVisitor::definitionStreams[i].getSource() == outputSourceName){
+                TranslatorVisitor::definitionStreams[i].isInputSource = false;
                 TranslatorVisitor::definitionStreams[i].isOutputSource = true;
+
             }
         }
+
     }
 }
 
@@ -98,7 +114,7 @@ void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext
             string referenceName =
                     ctx->output_attribute(i)->attribute_reference()->attribute_name()->name()->id()->getText();
             referenceName[0] = toupper(referenceName[0]);
-            methodForSetReference.addLine("\toutputSource.set" + referenceName + "(" + "inputSource.get" + referenceName + ");");
+            methodForSetReference.addLine("\toutputSource.set" + referenceName + "(" + "inputSource.get" + referenceName + "()" + ");");
             Method method;
             method.returnType = "void";
             string attributeReferenceCap = ctx->output_attribute(i)->attribute_reference()->attribute_name()->name()->id()->getText();
@@ -115,7 +131,7 @@ void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext
             }
             string attributeReferenceLow = attributeReferenceCap;
             attributeReferenceLow[0] = tolower(attributeReferenceCap[0]);
-            method.params.insert(pair<string,string>(attributeReferenceLow + "M",returnType));
+            method.params.insert(pair<string,string>(returnType , attributeReferenceLow + "M"));
             method.addLine("\tinputSource.set" + attributeReferenceCap + "(" + attributeReferenceLow + "M" + ");");
             method.addLine("\texecute();");
             executionHeader.publicMembers.publicMethods.push_back(method);
@@ -134,7 +150,7 @@ void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext
             string methodName = resolveMathOperation(ctx->output_attribute(i)->attribute()->math_operation(), i, 0, returnType);
             string attributeName = ctx->output_attribute(i)->attribute_name()->name()->id()->getText();
             attributeName[0] = toupper(attributeName[0]);
-            methodForSetReference.addLine("\toutputSourceName.set" + attributeName + "(" + methodName + ");");
+            methodForSetReference.addLine("\toutputSource.set" + attributeName + "(" + methodName + ");");
         }
     }
     executionHeader.publicMembers.publicMethods.push_back(methodForSetReference);

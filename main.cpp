@@ -55,5 +55,14 @@ int main ( int argc, const char *args[]){
 
     std::cout << "AppName : " << translatorVisitor.appName;
     std::cout << "Annotation : " << TranslatorVisitor::definitionStreams[1].annotation.getName();
+    string commonIncludeLines;
+    for (int i = 0; i < TranslatorVisitor::commonIncludes.size(); i++) {
+        commonIncludeLines += "#include\"" + TranslatorVisitor::commonIncludes[i] + "\n";
+    }
+    commonIncludeLines += "#include <iostream>\n";
+    commonIncludeLines += "using namespace std;\n";
+    ofstream headerFile("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/Generated_SP/common.h");
+    headerFile << commonIncludeLines;
+    headerFile.close();
     return 0;
 }

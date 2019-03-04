@@ -9,7 +9,7 @@ string FunctionCreation::createMethodLineForFunction(string ref, string attribut
     string reference = attribute;
     reference[0] = toupper(attribute[0]);
     if(ref == "sum"){
-        linesString += "\treturn inputSource.sum" + reference + "\n";
+        linesString += "\treturn inputSource.sum" + reference + ";\n";
     }
     return linesString;
 }

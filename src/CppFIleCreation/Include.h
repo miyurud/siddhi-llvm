@@ -25,7 +25,7 @@ using namespace std;
 class Include {
 public:
     vector<string> includes;
-    vector<string> lines;
+    string getIncludes();
 };
 
 

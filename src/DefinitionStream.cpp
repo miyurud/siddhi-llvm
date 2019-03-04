@@ -59,6 +59,17 @@ void DefinitionStream::setSource(string sourceM) {
 }
 
 void DefinitionStream::finalizeDefinitionStream(){
+    if(isOutputSource == true){
+        for (int i = 0; i < classCreator.publicMembers.publicMethods.size(); i++) {
+            if(classCreator.publicMembers.publicMethods[i].identifier.substr(0,3) == "set"){
+                Method method = classCreator.publicMembers.publicMethods[i];
+                string printVal = method.identifier.substr(3, method.identifier.length());
+                printVal[0] = tolower(printVal[0]);
+                classCreator.publicMembers.publicMethods[i].lines.push_back("std::cout << " + string("\"")+printVal + string("\"") +  "<<  \"-\" <<" + printVal +"<<\"\\n\""+ ";");
+                cout << "";
+            }
+        }
+    }
     classCreator.createHeaderSource();
     classCreator.createCppSource();
 }

@@ -16,3 +16,11 @@ limitations under the License.
 //
 
 #include "Include.h"
+
+string Include::getIncludes(){
+    string includesLines;
+    for (int i = 0; i < includes.size(); ++i) {
+        includesLines += "#include \"" + includes[i]  + "\"\n";
+    }
+    return includesLines;
+}
