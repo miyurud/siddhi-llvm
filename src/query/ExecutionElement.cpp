@@ -114,16 +114,19 @@ void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext
             string referenceName =
                     ctx->output_attribute(i)->attribute_reference()->attribute_name()->name()->id()->getText();
             referenceName[0] = toupper(referenceName[0]);
-            methodForSetReference.addLine("\toutputSource.set" + referenceName + "(" + "inputSource.get" + referenceName + "()" + ");");
+            methodForSetReference.addLine("\toutputSource.set" + referenceName + "("
+            + "inputSource.get" + referenceName + "()" + ");");
             Method method;
             method.returnType = "void";
-            string attributeReferenceCap = ctx->output_attribute(i)->attribute_reference()->attribute_name()->name()->id()->getText();
+            string attributeReferenceCap = ctx->output_attribute(i)
+                    ->attribute_reference()->attribute_name()->name()->id()->getText();
             attributeReferenceCap[0] = toupper(attributeReferenceCap[0]);
             method.identifier = "setInputSource" + attributeReferenceCap;
             string returnType = "";
             for (int j = 0; j < TranslatorVisitor::definitionStreams.size(); j++) {
                 if(TranslatorVisitor::definitionStreams[j].parameters.find(ctx->output_attribute(i)
-                ->attribute_reference()->attribute_name()->name()->id()->getText())!=TranslatorVisitor::definitionStreams[j].parameters.end()){
+                ->attribute_reference()->attribute_name()->name()->id()
+                ->getText())!=TranslatorVisitor::definitionStreams[j].parameters.end()){
                     string string1 = TranslatorVisitor::definitionStreams[j].parameters.find(ctx->output_attribute(i)
                             ->attribute_reference()->attribute_name()->name()->id()->getText())->second;
                     returnType = string1;
@@ -147,7 +150,8 @@ void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext
                     returnType = string1;
                 }
             }
-            string methodName = resolveMathOperation(ctx->output_attribute(i)->attribute()->math_operation(), i, 0, returnType);
+            string methodName = resolveMathOperation(ctx->output_attribute(i)
+                    ->attribute()->math_operation(), i, 0, returnType);
             string attributeName = ctx->output_attribute(i)->attribute_name()->name()->id()->getText();
             attributeName[0] = toupper(attributeName[0]);
             methodForSetReference.addLine("\toutputSource.set" + attributeName + "(" + methodName + ");");
@@ -156,7 +160,8 @@ void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext
     executionHeader.publicMembers.publicMethods.push_back(methodForSetReference);
 }
 
-string ExecutionElement::resolveMathOperation(SiddhiqlParser::Math_operationContext *ctx, int i, int count, string returnType){
+string ExecutionElement::resolveMathOperation(SiddhiqlParser::Math_operationContext *ctx, int i
+        , int count, string returnType){
     if(ctx->function_operation()) {
         Method method;
         method.identifier = ctx->function_operation()->function_id()->name()->id()->getText() + "_" + to_string(i) + "_"
@@ -167,13 +172,9 @@ string ExecutionElement::resolveMathOperation(SiddhiqlParser::Math_operationCont
                 ctx->function_operation()->function_id()->getText(),
                 ctx->function_operation()->attribute_list()[0].getText()));
 
-//        for (int j = 0; j < ctx->function_operation()->attribute_list()->attribute().size(); j++) {
-//            if(ctx->function_operation()->attribute_list()->attribute()[j]->math_operation()){
-//                method.addLine("return " + resolveMathOperation(ctx->function_operation()->attribute_list()->attribute()[j]->math_operation(),i,
-//                        count, returnType) + ";");
-//            }
-//        }
-        if (std::find(created_attribute_refs.begin(), created_attribute_refs.end(), ctx->function_operation()->attribute_list()[0].getText()) == created_attribute_refs.end()) {
+
+        if (std::find(created_attribute_refs.begin(), created_attribute_refs.end()
+                , ctx->function_operation()->attribute_list()[0].getText()) == created_attribute_refs.end()) {
             Method method1;
             method1.returnType = "void";
             string attributeReferenceCap = ctx->function_operation()->attribute_list()[0].getText();

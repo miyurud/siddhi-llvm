@@ -2,7 +2,7 @@
 // Created by tharsanan on 3/3/19.
 //
 
-#include <CppFIleCreation/ClassCreator.h>
+#include <cpp-file-creation/ClassCreator.h>
 #include "FileReader.h"
 
 void FileReader::createFile(string name){

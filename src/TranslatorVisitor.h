@@ -20,8 +20,8 @@ limitations under the License.
 #include "SiddhiqlParser.h"
 #include "SiddhiqlBaseListener.h"
 #include "SiddhiqlBaseVisitor.h"
-#include "DefinitionStream.h"
-#include "ExecutionElement.h"
+#include "query/DefinitionStream.h"
+#include "query/ExecutionElement.h"
 class TranslatorVisitor : SiddhiqlBaseVisitor{
 public:
     virtual antlrcpp::Any visitApp_annotation(SiddhiqlParser::App_annotationContext *ctx) override;

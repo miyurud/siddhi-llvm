@@ -23,7 +23,8 @@ antlrcpp::Any TranslatorVisitor::visitApp_annotation(SiddhiqlParser::App_annotat
     std :: cout << "\nvisit app annotation. \n";
     TranslatorVisitor :: app_annotationContext = ctx;
     if(ctx->name()->id()->getText() == "name"){
-        TranslatorVisitor :: appName =  app_annotationContext->annotation_element(0)->property_value()->string_value()->getText() ;
+        TranslatorVisitor :: appName =  app_annotationContext->annotation_element(0)
+                ->property_value()->string_value()->getText() ;
     }
     return 0;
 
@@ -68,7 +69,9 @@ Annotation TranslatorVisitor::createAnnotation(SiddhiqlParser::AnnotationContext
     Annotation annotation;
     annotation.setName(ctx->name()->getText());
     for (int i = 0; i < ctx->annotation_element().size(); i++) {
-        annotation.addAnnotationElement(ctx->annotation_element(i)->property_name()->name(0)->id()->getText(), ctx->annotation_element(i)->property_value()->string_value()->getText());
+        annotation.addAnnotationElement(ctx->annotation_element(i)
+        ->property_name()->name(0)->id()->getText(), ctx->annotation_element(i)
+        ->property_value()->string_value()->getText());
     }
     return annotation;
 }
