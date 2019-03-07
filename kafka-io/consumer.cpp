@@ -11,10 +11,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-//
-// Created by Christkiran on 2/28/19.
-//
-
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -128,10 +124,7 @@ class Consumer {
             case RdKafka::ERR_NO_ERROR:
                 msg_cnt++;
                 msg_bytes += message->len();
-                /* Real message */
-                /* printf("%.*s\n",
-                        static_cast<int>(message->len()),
-                        static_cast<const char *>(message->payload()));*/
+               
                 process(static_cast<const char *>(message->payload()));
 
 
@@ -139,7 +132,7 @@ class Consumer {
 
 
             case RdKafka::ERR__PARTITION_EOF:
-                /* Last message */
+               
                 if (exit_eof && ++eof_cnt == partition_cnt) {
                     std::cerr << "%% EOF reached for all " << partition_cnt <<
                               " partition(s)" << std::endl;

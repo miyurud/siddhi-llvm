@@ -11,10 +11,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-//
-// Created by Christkiran on 2/28/19.
-//
-
 #include <iostream>
 
 #include <librdkafka/rdkafkacpp.h>
@@ -51,12 +47,10 @@ public:
 };
 
 class Producer{
-/*    std::string topic_str = "test";
-    int32_t partition = 0;
-    std::string brokers = "localhost:9092";*/
+
     std::string errstr;
 
-std::string message;
+    std::string message;
 
 
 public: void start_producing(std::vector<std::string> message_array ,   std::string brokers ,int32_t partition, std::string topic_str ) {
@@ -98,11 +92,6 @@ public: void start_producing(std::vector<std::string> message_array ,   std::str
 
 
         RdKafka::Topic *topic = RdKafka::Topic::create(producer, topic_str, tconf, errstr);
-
-
-        //  RdKafka::ErrorCode resp = producer->produce(topic, 2 , &message_v, &key_v, NULL);
-
-
 
 
 
