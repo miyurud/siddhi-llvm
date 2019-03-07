@@ -9,7 +9,7 @@
 using namespace std;
 class FileReader {
 public:
-    void createFile(string name);
+    void createFile(string fileName, map<std::string, std::string> parameters);
 };
 
 

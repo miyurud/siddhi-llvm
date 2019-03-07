@@ -71,7 +71,10 @@ void ExecutionElement::executeQuery_input(SiddhiqlParser::Query_inputContext *ct
                 TranslatorVisitor::definitionStreams[i].isInputSource = true;
                 TranslatorVisitor::definitionStreams[i].isOutputSource = false;
                 FileReader fileReader;
-                fileReader.createFile(inputSourceName);
+                for (auto const& x : TranslatorVisitor::definitionStreams[i].parameters){
+                    fileReader.createFile(inputSourceName, TranslatorVisitor::definitionStreams[i].parameters);
+                }
+
                 mainFile.include.includes.push_back("FileReader.h");
                 mainMethod.addLine("FileReader fileReader;\n");
                 mainMethod.addLine("fileReader.readFileAndFeedData();");
