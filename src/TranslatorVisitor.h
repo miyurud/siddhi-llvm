@@ -20,8 +20,8 @@ limitations under the License.
 #include "SiddhiqlParser.h"
 #include "SiddhiqlBaseListener.h"
 #include "SiddhiqlBaseVisitor.h"
-#include "DefinitionStream.h"
-#include "ExecutionElement.h"
+#include "query/DefinitionStream.h"
+#include "query/ExecutionElement.h"
 class TranslatorVisitor : SiddhiqlBaseVisitor{
 public:
     virtual antlrcpp::Any visitApp_annotation(SiddhiqlParser::App_annotationContext *ctx) override;
@@ -31,9 +31,10 @@ public:
 
     SiddhiqlParser::App_annotationContext *app_annotationContext;
     std :: string appName;
-    std :: vector<DefinitionStream> definitionStreams;
+    static vector<DefinitionStream> definitionStreams;
     ExecutionElement executionElement;
     Annotation createAnnotation(SiddhiqlParser::AnnotationContext *ctx );
+    static vector<string> commonIncludes;
 };
 
 

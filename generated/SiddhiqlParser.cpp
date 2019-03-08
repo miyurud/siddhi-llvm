@@ -1,15 +1,3 @@
-/**
-Copyright 2019 Siddhi-LLVM Team
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 
 	//import org.wso2.siddhi.query.compiler.exception.SiddhiParserException;
 
@@ -9759,300 +9747,75 @@ SiddhiqlParser::Math_operationContext::Math_operationContext(ParserRuleContext *
   : ParserRuleContext(parent, invokingState) {
 }
 
+std::vector<SiddhiqlParser::Math_operationContext *> SiddhiqlParser::Math_operationContext::math_operation() {
+  return getRuleContexts<SiddhiqlParser::Math_operationContext>();
+}
+
+SiddhiqlParser::Math_operationContext* SiddhiqlParser::Math_operationContext::math_operation(size_t i) {
+  return getRuleContext<SiddhiqlParser::Math_operationContext>(i);
+}
+
+SiddhiqlParser::Null_checkContext* SiddhiqlParser::Math_operationContext::null_check() {
+  return getRuleContext<SiddhiqlParser::Null_checkContext>(0);
+}
+
+tree::TerminalNode* SiddhiqlParser::Math_operationContext::NOT() {
+  return getToken(SiddhiqlParser::NOT, 0);
+}
+
+SiddhiqlParser::Function_operationContext* SiddhiqlParser::Math_operationContext::function_operation() {
+  return getRuleContext<SiddhiqlParser::Function_operationContext>(0);
+}
+
+SiddhiqlParser::Constant_valueContext* SiddhiqlParser::Math_operationContext::constant_value() {
+  return getRuleContext<SiddhiqlParser::Constant_valueContext>(0);
+}
+
+SiddhiqlParser::Attribute_referenceContext* SiddhiqlParser::Math_operationContext::attribute_reference() {
+  return getRuleContext<SiddhiqlParser::Attribute_referenceContext>(0);
+}
+
+tree::TerminalNode* SiddhiqlParser::Math_operationContext::AND() {
+  return getToken(SiddhiqlParser::AND, 0);
+}
+
+tree::TerminalNode* SiddhiqlParser::Math_operationContext::OR() {
+  return getToken(SiddhiqlParser::OR, 0);
+}
+
+tree::TerminalNode* SiddhiqlParser::Math_operationContext::IN() {
+  return getToken(SiddhiqlParser::IN, 0);
+}
+
+SiddhiqlParser::NameContext* SiddhiqlParser::Math_operationContext::name() {
+  return getRuleContext<SiddhiqlParser::NameContext>(0);
+}
+
 
 size_t SiddhiqlParser::Math_operationContext::getRuleIndex() const {
   return SiddhiqlParser::RuleMath_operation;
 }
 
-void SiddhiqlParser::Math_operationContext::copyFrom(Math_operationContext *ctx) {
-  ParserRuleContext::copyFrom(ctx);
-}
-
-//----------------- Multiplication_math_operationContext ------------------------------------------------------------------
-
-std::vector<SiddhiqlParser::Math_operationContext *> SiddhiqlParser::Multiplication_math_operationContext::math_operation() {
-  return getRuleContexts<SiddhiqlParser::Math_operationContext>();
-}
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::Multiplication_math_operationContext::math_operation(size_t i) {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(i);
-}
-
-SiddhiqlParser::Multiplication_math_operationContext::Multiplication_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::Multiplication_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
+void SiddhiqlParser::Math_operationContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterMultiplication_math_operation(this);
-}
-void SiddhiqlParser::Multiplication_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitMultiplication_math_operation(this);
+    parserListener->enterMath_operation(this);
 }
 
-antlrcpp::Any SiddhiqlParser::Multiplication_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
+void SiddhiqlParser::Math_operationContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitMath_operation(this);
+}
+
+
+antlrcpp::Any SiddhiqlParser::Math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitMultiplication_math_operation(this);
+    return parserVisitor->visitMath_operation(this);
   else
     return visitor->visitChildren(this);
 }
-//----------------- Greaterthan_lessthan_math_operationContext ------------------------------------------------------------------
 
-std::vector<SiddhiqlParser::Math_operationContext *> SiddhiqlParser::Greaterthan_lessthan_math_operationContext::math_operation() {
-  return getRuleContexts<SiddhiqlParser::Math_operationContext>();
-}
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::Greaterthan_lessthan_math_operationContext::math_operation(size_t i) {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(i);
-}
-
-SiddhiqlParser::Greaterthan_lessthan_math_operationContext::Greaterthan_lessthan_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::Greaterthan_lessthan_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterGreaterthan_lessthan_math_operation(this);
-}
-void SiddhiqlParser::Greaterthan_lessthan_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitGreaterthan_lessthan_math_operation(this);
-}
-
-antlrcpp::Any SiddhiqlParser::Greaterthan_lessthan_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitGreaterthan_lessthan_math_operation(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- Basic_math_operationContext ------------------------------------------------------------------
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::Basic_math_operationContext::math_operation() {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(0);
-}
-
-SiddhiqlParser::Null_checkContext* SiddhiqlParser::Basic_math_operationContext::null_check() {
-  return getRuleContext<SiddhiqlParser::Null_checkContext>(0);
-}
-
-SiddhiqlParser::Function_operationContext* SiddhiqlParser::Basic_math_operationContext::function_operation() {
-  return getRuleContext<SiddhiqlParser::Function_operationContext>(0);
-}
-
-SiddhiqlParser::Constant_valueContext* SiddhiqlParser::Basic_math_operationContext::constant_value() {
-  return getRuleContext<SiddhiqlParser::Constant_valueContext>(0);
-}
-
-SiddhiqlParser::Attribute_referenceContext* SiddhiqlParser::Basic_math_operationContext::attribute_reference() {
-  return getRuleContext<SiddhiqlParser::Attribute_referenceContext>(0);
-}
-
-SiddhiqlParser::Basic_math_operationContext::Basic_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::Basic_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterBasic_math_operation(this);
-}
-void SiddhiqlParser::Basic_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitBasic_math_operation(this);
-}
-
-antlrcpp::Any SiddhiqlParser::Basic_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitBasic_math_operation(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- In_math_operationContext ------------------------------------------------------------------
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::In_math_operationContext::math_operation() {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(0);
-}
-
-tree::TerminalNode* SiddhiqlParser::In_math_operationContext::IN() {
-  return getToken(SiddhiqlParser::IN, 0);
-}
-
-SiddhiqlParser::NameContext* SiddhiqlParser::In_math_operationContext::name() {
-  return getRuleContext<SiddhiqlParser::NameContext>(0);
-}
-
-SiddhiqlParser::In_math_operationContext::In_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::In_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterIn_math_operation(this);
-}
-void SiddhiqlParser::In_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitIn_math_operation(this);
-}
-
-antlrcpp::Any SiddhiqlParser::In_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitIn_math_operation(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- Addition_math_operationContext ------------------------------------------------------------------
-
-std::vector<SiddhiqlParser::Math_operationContext *> SiddhiqlParser::Addition_math_operationContext::math_operation() {
-  return getRuleContexts<SiddhiqlParser::Math_operationContext>();
-}
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::Addition_math_operationContext::math_operation(size_t i) {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(i);
-}
-
-SiddhiqlParser::Addition_math_operationContext::Addition_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::Addition_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAddition_math_operation(this);
-}
-void SiddhiqlParser::Addition_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAddition_math_operation(this);
-}
-
-antlrcpp::Any SiddhiqlParser::Addition_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitAddition_math_operation(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- And_math_operationContext ------------------------------------------------------------------
-
-std::vector<SiddhiqlParser::Math_operationContext *> SiddhiqlParser::And_math_operationContext::math_operation() {
-  return getRuleContexts<SiddhiqlParser::Math_operationContext>();
-}
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::And_math_operationContext::math_operation(size_t i) {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(i);
-}
-
-tree::TerminalNode* SiddhiqlParser::And_math_operationContext::AND() {
-  return getToken(SiddhiqlParser::AND, 0);
-}
-
-SiddhiqlParser::And_math_operationContext::And_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::And_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAnd_math_operation(this);
-}
-void SiddhiqlParser::And_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAnd_math_operation(this);
-}
-
-antlrcpp::Any SiddhiqlParser::And_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitAnd_math_operation(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- Or_math_operationContext ------------------------------------------------------------------
-
-std::vector<SiddhiqlParser::Math_operationContext *> SiddhiqlParser::Or_math_operationContext::math_operation() {
-  return getRuleContexts<SiddhiqlParser::Math_operationContext>();
-}
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::Or_math_operationContext::math_operation(size_t i) {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(i);
-}
-
-tree::TerminalNode* SiddhiqlParser::Or_math_operationContext::OR() {
-  return getToken(SiddhiqlParser::OR, 0);
-}
-
-SiddhiqlParser::Or_math_operationContext::Or_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::Or_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterOr_math_operation(this);
-}
-void SiddhiqlParser::Or_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitOr_math_operation(this);
-}
-
-antlrcpp::Any SiddhiqlParser::Or_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitOr_math_operation(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- Equality_math_operationContext ------------------------------------------------------------------
-
-std::vector<SiddhiqlParser::Math_operationContext *> SiddhiqlParser::Equality_math_operationContext::math_operation() {
-  return getRuleContexts<SiddhiqlParser::Math_operationContext>();
-}
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::Equality_math_operationContext::math_operation(size_t i) {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(i);
-}
-
-SiddhiqlParser::Equality_math_operationContext::Equality_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::Equality_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterEquality_math_operation(this);
-}
-void SiddhiqlParser::Equality_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitEquality_math_operation(this);
-}
-
-antlrcpp::Any SiddhiqlParser::Equality_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitEquality_math_operation(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- Not_math_operationContext ------------------------------------------------------------------
-
-tree::TerminalNode* SiddhiqlParser::Not_math_operationContext::NOT() {
-  return getToken(SiddhiqlParser::NOT, 0);
-}
-
-SiddhiqlParser::Math_operationContext* SiddhiqlParser::Not_math_operationContext::math_operation() {
-  return getRuleContext<SiddhiqlParser::Math_operationContext>(0);
-}
-
-SiddhiqlParser::Not_math_operationContext::Not_math_operationContext(Math_operationContext *ctx) { copyFrom(ctx); }
-
-void SiddhiqlParser::Not_math_operationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterNot_math_operation(this);
-}
-void SiddhiqlParser::Not_math_operationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<SiddhiqlListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitNot_math_operation(this);
-}
-
-antlrcpp::Any SiddhiqlParser::Not_math_operationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SiddhiqlVisitor*>(visitor))
-    return parserVisitor->visitNot_math_operation(this);
-  else
-    return visitor->visitChildren(this);
-}
 
 SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation() {
    return math_operation(0);
@@ -10078,10 +9841,6 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 157, _ctx)) {
     case 1: {
-      _localctx = _tracker.createInstance<Basic_math_operationContext>(_localctx);
-      _ctx = _localctx;
-      previousContext = _localctx;
-
       setState(1333);
       match(SiddhiqlParser::OPEN_PAR);
       setState(1334);
@@ -10092,18 +9851,12 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
     }
 
     case 2: {
-      _localctx = _tracker.createInstance<Basic_math_operationContext>(_localctx);
-      _ctx = _localctx;
-      previousContext = _localctx;
       setState(1337);
       null_check();
       break;
     }
 
     case 3: {
-      _localctx = _tracker.createInstance<Not_math_operationContext>(_localctx);
-      _ctx = _localctx;
-      previousContext = _localctx;
       setState(1338);
       match(SiddhiqlParser::NOT);
       setState(1339);
@@ -10112,27 +9865,18 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
     }
 
     case 4: {
-      _localctx = _tracker.createInstance<Basic_math_operationContext>(_localctx);
-      _ctx = _localctx;
-      previousContext = _localctx;
       setState(1340);
       function_operation();
       break;
     }
 
     case 5: {
-      _localctx = _tracker.createInstance<Basic_math_operationContext>(_localctx);
-      _ctx = _localctx;
-      previousContext = _localctx;
       setState(1341);
       constant_value();
       break;
     }
 
     case 6: {
-      _localctx = _tracker.createInstance<Basic_math_operationContext>(_localctx);
-      _ctx = _localctx;
-      previousContext = _localctx;
       setState(1342);
       attribute_reference();
       break;
@@ -10152,9 +9896,8 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
         _errHandler->sync(this);
         switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 162, _ctx)) {
         case 1: {
-          auto newContext = _tracker.createInstance<Multiplication_math_operationContext>(_tracker.createInstance<Math_operationContext>(parentContext, parentState));
-          _localctx = newContext;
-          pushNewRecursionContext(newContext, startState, RuleMath_operation);
+          _localctx = _tracker.createInstance<Math_operationContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleMath_operation);
           setState(1345);
 
           if (!(precpred(_ctx, 10))) throw FailedPredicateException(this, "precpred(_ctx, 10)");
@@ -10163,19 +9906,19 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
           switch (_input->LA(1)) {
             case SiddhiqlParser::STAR: {
               setState(1346);
-              dynamic_cast<Multiplication_math_operationContext *>(_localctx)->multiply = match(SiddhiqlParser::STAR);
+              dynamic_cast<Math_operationContext *>(_localctx)->multiply = match(SiddhiqlParser::STAR);
               break;
             }
 
             case SiddhiqlParser::DIV: {
               setState(1347);
-              dynamic_cast<Multiplication_math_operationContext *>(_localctx)->devide = match(SiddhiqlParser::DIV);
+              dynamic_cast<Math_operationContext *>(_localctx)->devide = match(SiddhiqlParser::DIV);
               break;
             }
 
             case SiddhiqlParser::MOD: {
               setState(1348);
-              dynamic_cast<Multiplication_math_operationContext *>(_localctx)->mod = match(SiddhiqlParser::MOD);
+              dynamic_cast<Math_operationContext *>(_localctx)->mod = match(SiddhiqlParser::MOD);
               break;
             }
 
@@ -10188,9 +9931,8 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
         }
 
         case 2: {
-          auto newContext = _tracker.createInstance<Addition_math_operationContext>(_tracker.createInstance<Math_operationContext>(parentContext, parentState));
-          _localctx = newContext;
-          pushNewRecursionContext(newContext, startState, RuleMath_operation);
+          _localctx = _tracker.createInstance<Math_operationContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleMath_operation);
           setState(1352);
 
           if (!(precpred(_ctx, 9))) throw FailedPredicateException(this, "precpred(_ctx, 9)");
@@ -10199,13 +9941,13 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
           switch (_input->LA(1)) {
             case SiddhiqlParser::PLUS: {
               setState(1353);
-              dynamic_cast<Addition_math_operationContext *>(_localctx)->add = match(SiddhiqlParser::PLUS);
+              dynamic_cast<Math_operationContext *>(_localctx)->add = match(SiddhiqlParser::PLUS);
               break;
             }
 
             case SiddhiqlParser::MINUS: {
               setState(1354);
-              dynamic_cast<Addition_math_operationContext *>(_localctx)->substract = match(SiddhiqlParser::MINUS);
+              dynamic_cast<Math_operationContext *>(_localctx)->substract = match(SiddhiqlParser::MINUS);
               break;
             }
 
@@ -10218,9 +9960,8 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
         }
 
         case 3: {
-          auto newContext = _tracker.createInstance<Greaterthan_lessthan_math_operationContext>(_tracker.createInstance<Math_operationContext>(parentContext, parentState));
-          _localctx = newContext;
-          pushNewRecursionContext(newContext, startState, RuleMath_operation);
+          _localctx = _tracker.createInstance<Math_operationContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleMath_operation);
           setState(1358);
 
           if (!(precpred(_ctx, 8))) throw FailedPredicateException(this, "precpred(_ctx, 8)");
@@ -10229,25 +9970,25 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
           switch (_input->LA(1)) {
             case SiddhiqlParser::GT_EQ: {
               setState(1359);
-              dynamic_cast<Greaterthan_lessthan_math_operationContext *>(_localctx)->gt_eq = match(SiddhiqlParser::GT_EQ);
+              dynamic_cast<Math_operationContext *>(_localctx)->gt_eq = match(SiddhiqlParser::GT_EQ);
               break;
             }
 
             case SiddhiqlParser::LT_EQ: {
               setState(1360);
-              dynamic_cast<Greaterthan_lessthan_math_operationContext *>(_localctx)->lt_eq = match(SiddhiqlParser::LT_EQ);
+              dynamic_cast<Math_operationContext *>(_localctx)->lt_eq = match(SiddhiqlParser::LT_EQ);
               break;
             }
 
             case SiddhiqlParser::GT: {
               setState(1361);
-              dynamic_cast<Greaterthan_lessthan_math_operationContext *>(_localctx)->gt = match(SiddhiqlParser::GT);
+              dynamic_cast<Math_operationContext *>(_localctx)->gt = match(SiddhiqlParser::GT);
               break;
             }
 
             case SiddhiqlParser::LT: {
               setState(1362);
-              dynamic_cast<Greaterthan_lessthan_math_operationContext *>(_localctx)->lt = match(SiddhiqlParser::LT);
+              dynamic_cast<Math_operationContext *>(_localctx)->lt = match(SiddhiqlParser::LT);
               break;
             }
 
@@ -10260,9 +10001,8 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
         }
 
         case 4: {
-          auto newContext = _tracker.createInstance<Equality_math_operationContext>(_tracker.createInstance<Math_operationContext>(parentContext, parentState));
-          _localctx = newContext;
-          pushNewRecursionContext(newContext, startState, RuleMath_operation);
+          _localctx = _tracker.createInstance<Math_operationContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleMath_operation);
           setState(1366);
 
           if (!(precpred(_ctx, 7))) throw FailedPredicateException(this, "precpred(_ctx, 7)");
@@ -10271,13 +10011,13 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
           switch (_input->LA(1)) {
             case SiddhiqlParser::EQ: {
               setState(1367);
-              dynamic_cast<Equality_math_operationContext *>(_localctx)->eq = match(SiddhiqlParser::EQ);
+              dynamic_cast<Math_operationContext *>(_localctx)->eq = match(SiddhiqlParser::EQ);
               break;
             }
 
             case SiddhiqlParser::NOT_EQ: {
               setState(1368);
-              dynamic_cast<Equality_math_operationContext *>(_localctx)->not_equal = match(SiddhiqlParser::NOT_EQ);
+              dynamic_cast<Math_operationContext *>(_localctx)->not_equal = match(SiddhiqlParser::NOT_EQ);
               break;
             }
 
@@ -10290,9 +10030,8 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
         }
 
         case 5: {
-          auto newContext = _tracker.createInstance<And_math_operationContext>(_tracker.createInstance<Math_operationContext>(parentContext, parentState));
-          _localctx = newContext;
-          pushNewRecursionContext(newContext, startState, RuleMath_operation);
+          _localctx = _tracker.createInstance<Math_operationContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleMath_operation);
           setState(1372);
 
           if (!(precpred(_ctx, 5))) throw FailedPredicateException(this, "precpred(_ctx, 5)");
@@ -10304,9 +10043,8 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
         }
 
         case 6: {
-          auto newContext = _tracker.createInstance<Or_math_operationContext>(_tracker.createInstance<Math_operationContext>(parentContext, parentState));
-          _localctx = newContext;
-          pushNewRecursionContext(newContext, startState, RuleMath_operation);
+          _localctx = _tracker.createInstance<Math_operationContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleMath_operation);
           setState(1375);
 
           if (!(precpred(_ctx, 4))) throw FailedPredicateException(this, "precpred(_ctx, 4)");
@@ -10318,9 +10056,8 @@ SiddhiqlParser::Math_operationContext* SiddhiqlParser::math_operation(int preced
         }
 
         case 7: {
-          auto newContext = _tracker.createInstance<In_math_operationContext>(_tracker.createInstance<Math_operationContext>(parentContext, parentState));
-          _localctx = newContext;
-          pushNewRecursionContext(newContext, startState, RuleMath_operation);
+          _localctx = _tracker.createInstance<Math_operationContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleMath_operation);
           setState(1378);
 
           if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");

@@ -15,29 +15,18 @@ limitations under the License.
 // Created by tharsanan on 2/23/19.
 //
 
-#ifndef STREAM_PROCESSOR_CLASSCREATOR_H
-#define STREAM_PROCESSOR_CLASSCREATOR_H
+#ifndef STREAM_PROCESSOR_INCLUDE_H
+#define STREAM_PROCESSOR_INCLUDE_H
 
-#include "Include.h"
-#include "PublicMembers.h"
+#include <vector>
 #include <string>
 
 using namespace std;
-
-class ClassCreator {
+class Include {
 public:
-    Include include;
-    PublicMembers publicMembers;
-    string headerSrc;
-    string cppSrc;
-    string className;
-    vector<string> lines;
-    void prepareIncludeLines();
-    void preparePublicMethodLines();
-    void preparePublicVariableLines();
-    string createHeaderSource();
-    void createHeaderFile();
+    vector<string> includes;
+    string getIncludes();
 };
 
 
-#endif //STREAM_PROCESSOR_CLASSCREATOR_H
+#endif //STREAM_PROCESSOR_INCLUDE_H

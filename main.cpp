@@ -26,17 +26,24 @@ using namespace std;
 
 int main ( int argc, const char *args[]){
     ifstream stream;
-    stream.open("/home/tharsanan/Tharsanan/FYP/Stream-Processor/sample.exec");
+    stream.open("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/sample.exec");
     ANTLRInputStream input(stream);
     SiddhiqlLexer lexer(&input);
     CommonTokenStream tokens(&lexer);
     SiddhiqlParser parser(&tokens);
-
+    string a;
+    std::ifstream infile("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/LICENSE");
+    char str[255];
+    while (infile >> a )
+    {
+        cout << a <<"\n";
+        // process pair (a,b)
+    }
     tree::ParseTree *Tree = parser.siddhi_app();
     Translator listener;
 
     ifstream stream1;
-    stream1.open("/home/tharsanan/Tharsanan/FYP/Stream-Processor/sample.exec");
+    stream1.open("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/sample.exec");
     ANTLRInputStream input1(stream1);
     SiddhiqlLexer lexer1(&input1);
     CommonTokenStream tokens1(&lexer1);
@@ -47,6 +54,15 @@ int main ( int argc, const char *args[]){
     translatorVisitor.visitSiddhi_app(visitTree);
 
     std::cout << "AppName : " << translatorVisitor.appName;
-    std::cout << "Annotation : " << translatorVisitor.definitionStreams[1].annotation.getName();
+    std::cout << "Annotation : " << TranslatorVisitor::definitionStreams[1].annotation.getName();
+    string commonIncludeLines;
+    for (int i = 0; i < TranslatorVisitor::commonIncludes.size(); i++) {
+        commonIncludeLines += "#include\"" + TranslatorVisitor::commonIncludes[i] + "\n";
+    }
+    commonIncludeLines += "#include <iostream>\n";
+    commonIncludeLines += "using namespace std;\n";
+    ofstream headerFile("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/Generated_SP/common.h");
+    headerFile << commonIncludeLines;
+    headerFile.close();
     return 0;
 }

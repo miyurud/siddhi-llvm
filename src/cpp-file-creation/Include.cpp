@@ -15,4 +15,12 @@ limitations under the License.
 // Created by tharsanan on 2/23/19.
 //
 
-#include "Variable.h"
+#include "Include.h"
+
+string Include::getIncludes(){
+    string includesLines;
+    for (int i = 0; i < includes.size(); ++i) {
+        includesLines += "#include \"" + includes[i]  + "\"\n";
+    }
+    return includesLines;
+}

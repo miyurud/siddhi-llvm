@@ -15,24 +15,7 @@ limitations under the License.
 // Created by tharsanan on 2/23/19.
 //
 
-#ifndef STREAM_PROCESSOR_METHOD_H
-#define STREAM_PROCESSOR_METHOD_H
-
-#include <string>
-#include <vector>
-#include <map>
-
-using namespace std;
-class Method {
-public:
-    string returnType;
-    string identifier;
-    map<string,string> params;
-    vector<string> lines;
-    static Method createSetterMethod(string variableName,  string variableType);
-    static Method createGetterMethod(string variableName, string variableType);
-
-};
-
-
-#endif //STREAM_PROCESSOR_METHOD_H
+#include "Variable.h"
+void Variable::setIdentifier(string s){
+    identifier = s;
+}

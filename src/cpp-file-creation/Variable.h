@@ -12,8 +12,23 @@ limitations under the License.
 */
 
 //
-// Created by tharsanan on 1/31/19.
+// Created by tharsanan on 2/23/19.
 //
 
-#include "LLVM_IR_Strings.h"
-const std::string LLVM_IR_Strings :: GLOBAL = "global";
+#ifndef STREAM_PROCESSOR_VARIABLE_H
+#define STREAM_PROCESSOR_VARIABLE_H
+
+#include <string>
+#include <vector>
+
+using namespace std;
+class Variable {
+public:
+    string dataType;
+    string identifier;
+    vector<string> lines;
+    void setIdentifier(string s);
+};
+
+
+#endif //STREAM_PROCESSOR_VARIABLE_H

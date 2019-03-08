@@ -1,5 +1,5 @@
 @App:name("HelloWorldApp")
-define stream CargoStream (weight int, roomNo int, temp double);
+define stream CargoStream (weight int);
 @sink(type='log', prefix='LOGGER')
 define stream OutputStream (weight int, totalWeight long);
 @info(name='HelloWorldQuery')

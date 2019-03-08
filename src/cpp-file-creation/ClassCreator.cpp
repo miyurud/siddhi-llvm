@@ -17,11 +17,7 @@ limitations under the License.
 
 #include <fstream>
 #include "ClassCreator.h"
-void ClassCreator::prepareIncludeLines(){
-    for (int i = 0; i < include.includes.size(); i++) {
-        include.lines.push_back(string("#include \"") + include.includes[i] + string("\""));
-    }
-}
+
 void ClassCreator::preparePublicMethodLines(){
     for (int i = 0; i < publicMembers.publicMethods.size(); i++) {
         Method method = publicMembers.publicMethods[i];
@@ -52,12 +48,10 @@ void ClassCreator::preparePublicVariableLines(){
 }
 
 string ClassCreator::createHeaderSource(){
-    prepareIncludeLines();
     preparePublicMethodLines();
     preparePublicVariableLines();
-    for (int i = 0; i < include.includes.size(); i++) {
-        headerSrc += include.includes[i] + "\n";
-    }
+    headerSrc += "#include \"common.h\"\n";
+    headerSrc += include.getIncludes() + "\n";
     headerSrc += "class " + className + " {\n";
     headerSrc += "public : \n";
     string tab = "\t";
@@ -67,13 +61,53 @@ string ClassCreator::createHeaderSource(){
     for (int k = 0; k < publicMembers.variableLines.size(); ++k) {
         headerSrc += tab + publicMembers.variableLines[k] + "\n";
     }
-    headerSrc += "}\n";
+    headerSrc += "};\n";
     createHeaderFile();
     return headerSrc;
 }
 
 void ClassCreator::createHeaderFile(){
-    ofstream headerFile("out/"+className + ".h");
+    ofstream headerFile("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/Generated_SP/" + className + ".h");
     headerFile << headerSrc;
     headerFile.close();
+}
+
+string ClassCreator::createCppSource() {
+    if(className != "main"){
+        cppSrc += "#include " + string("\"") + className + ".h" + string("\"\n");
+    }
+    else{
+        cppSrc += include.getIncludes();
+    }
+    for (int i = 0; i < publicMembers.publicMethods.size(); i++) {
+        Method method = publicMembers.publicMethods[i];
+        if(className != "main") {
+            cppSrc += method.returnType + " " + className + "::" + method.identifier + "(";
+        }
+        else{
+            cppSrc += method.returnType + " " + method.identifier + "(";
+        }
+        bool flag = false;
+        for( auto const& x : method.params )
+        {
+            cppSrc +=  x.first + " " + x.second + ",";
+            flag = true;
+        }
+        if(flag){
+            cppSrc = cppSrc.substr(0, cppSrc.size()-1);
+        }
+        cppSrc += "){\n";
+        for (int j = 0; j < method.lines.size(); ++j) {
+            cppSrc += method.lines[j] + "\n";
+        }
+        cppSrc += "}\n";
+    }
+    createCppFile();
+    return cppSrc;
+}
+
+void ClassCreator::createCppFile(){
+    ofstream headerFile1("/home/tharsanan/Tharsanan/FYP/siddhi-llvm/Generated_SP/" + className + ".cpp");
+    headerFile1 << cppSrc;
+    headerFile1.close();
 }

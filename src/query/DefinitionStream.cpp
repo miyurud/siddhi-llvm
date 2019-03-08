@@ -27,6 +27,13 @@ void DefinitionStream::addParam(string name, string type) {
     classCreator.publicMembers.publicVariables.push_back(variable);
     classCreator.publicMembers.publicMethods.push_back(Method::createGetterMethod(name,type));
     classCreator.publicMembers.publicMethods.push_back(Method::createSetterMethod(name,type));
+    name[0] = toupper(name[0]); // this line has problem of type change for example int and long. need to redisgn later for better campatibility.
+    Variable variable1;
+    variable1.identifier = "sum"+name;
+    variable1.dataType = type;
+    classCreator.publicMembers.publicVariables.push_back(variable1);
+    classCreator.publicMembers.publicMethods.push_back(Method::createGetterMethod("sum" + name,type));
+    classCreator.publicMembers.publicMethods.push_back(Method::createSetterMethod("sum" + name,type));
 
 }
 
@@ -52,6 +59,18 @@ void DefinitionStream::setSource(string sourceM) {
 }
 
 void DefinitionStream::finalizeDefinitionStream(){
-    string ss = classCreator.createHeaderSource();
-    std::cout << ss;
+    if(isOutputSource == true){
+        for (int i = 0; i < classCreator.publicMembers.publicMethods.size(); i++) {
+            if(classCreator.publicMembers.publicMethods[i].identifier.substr(0,3) == "set"){
+                Method method = classCreator.publicMembers.publicMethods[i];
+                string printVal = method.identifier.substr(3, method.identifier.length());
+                printVal[0] = tolower(printVal[0]);
+                classCreator.publicMembers.publicMethods[i].lines.push_back("std::cout << "
+                + string("\"")+printVal + string("\"") +  "<<  \"-\" <<" + printVal +"<<\"\\n\""+ ";");
+                cout << "";
+            }
+        }
+    }
+    classCreator.createHeaderSource();
+    classCreator.createCppSource();
 }

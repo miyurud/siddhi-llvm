@@ -24,6 +24,12 @@ Method Method::createSetterMethod(string variableName, string variableType){
     methodName[0] = toupper(methodName[0]);
     method.identifier = "set"+methodName;
     method.params.insert(pair<string,string>(variableType,variableName+"M"));
+    if(variableName.substr(0,3) != "sum"){
+        string variableNameCap = variableName;
+        variableNameCap[0] = toupper(variableName[0]);
+        method.addLine("\tsum" + variableNameCap + " += " + variableName + "M;");
+    }
+    method.addSetterLines(variableName);
     return method;
 }
 
@@ -33,5 +39,18 @@ Method Method::createGetterMethod(string variableName,string variableType){
     string methodName = variableName;
     methodName[0] = toupper(methodName[0]);
     method.identifier = "get"+methodName;
+    method.addGetterLines(variableName);
     return method;
+}
+
+void Method::addSetterLines(string variableName){
+    lines.push_back("\t" + variableName + " = " + variableName+"M;");
+}
+
+void Method::addGetterLines(string variableName){
+    lines.push_back("\treturn " + variableName + ";");
+}
+
+void Method::addLine(string line) {
+    lines.push_back(line);
 }
