@@ -11,10 +11,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-//
-// Created by tharsanan on 2/1/19.
-//
-
 #include "TranslatorVisitor.h"
 
 std :: vector<DefinitionStream> TranslatorVisitor::definitionStreams;

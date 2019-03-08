@@ -11,10 +11,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-//
-// Created by tharsanan on 2/2/19.
-//
-
 #include "Annotation.h"
 void Annotation::addAnnotationElement(string name, string value){
     annotationElements.insert(std::pair<string, string>(name,value));

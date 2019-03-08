@@ -11,10 +11,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-//
-// Created by tharsanan on 2/23/19.
-//
-
 #ifndef STREAM_PROCESSOR_PUBLICMEMBERS_H
 #define STREAM_PROCESSOR_PUBLICMEMBERS_H
 
