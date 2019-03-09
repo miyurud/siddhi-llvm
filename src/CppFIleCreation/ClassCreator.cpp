@@ -11,10 +11,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-//
-// Created by tharsanan on 2/23/19.
-//
-
 #include <fstream>
 #include "ClassCreator.h"
 void ClassCreator::prepareIncludeLines(){
