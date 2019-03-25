@@ -50,6 +50,7 @@ string ClassCreator::createHeaderSource(){
     headerSrc += include.getIncludes() + "\n";
     headerSrc += "class " + className + " {\n";
     headerSrc += "public : \n";
+    headerSrc += className + "();\n";
     string tab = "\t";
     for (int j = 0; j < publicMembers.methodLines.size(); ++j) {
         headerSrc += tab + publicMembers.methodLines[j] + "\n";
@@ -71,6 +72,20 @@ void ClassCreator::createHeaderFile(){
 string ClassCreator::createCppSource() {
     if(className != "main"){
         cppSrc += "#include " + string("\"") + className + ".h" + string("\"\n");
+        cppSrc += className + "::" + className + "(){\n";
+        for(int i = 0; i < publicMembers.publicVariables.size(); i++){
+            if(publicMembers.publicVariables[i].dataType == "int"){
+                cppSrc += publicMembers.publicVariables[i].identifier + " = " + "0;\n";
+            }
+            else if(publicMembers.publicVariables[i].dataType == "string"){
+                cppSrc += publicMembers.publicVariables[i].identifier + " = " + "\"\";\n";
+            }
+            else if(publicMembers.publicVariables[i].dataType == "long"){
+                cppSrc += publicMembers.publicVariables[i].identifier + " = " + "0"
+                                                                                ";\n";
+            }
+        }
+        cppSrc += "}";
     }
     else{
         cppSrc += include.getIncludes();

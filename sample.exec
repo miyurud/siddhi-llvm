@@ -1,8 +1,9 @@
 @App:name("HelloWorldApp")
-define stream CargoStream (weight int);
+@kafka(type='consume', host='local')
+define stream CargoStream (weight string);
 @sink(type='log', prefix='LOGGER')
-define stream OutputStream (weight int, totalWeight long);
+define stream OutputStream (weight string);
 @info(name='HelloWorldQuery')
 from CargoStream
-select weight, sum(weight) as totalWeight
+select weight
 insert into OutputStream;
