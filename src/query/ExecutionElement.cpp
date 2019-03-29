@@ -12,6 +12,7 @@ limitations under the License.
 */
 
 #include <SiddhiqlParser.h>
+#include <KafkaConsumer.h>
 #include "ExecutionElement.h"
 #include "TranslatorVisitor.h"
 #include "FileReader.h"
@@ -64,16 +65,30 @@ void ExecutionElement::executeQuery_input(SiddhiqlParser::Query_inputContext *ct
         executionHeader.include.includes.push_back(inputSourceName + ".h");
         for (int i = 0; i < TranslatorVisitor::definitionStreams.size(); i++) {
             if(TranslatorVisitor::definitionStreams[i].getSource() == inputSourceName){
+
                 TranslatorVisitor::definitionStreams[i].isInputSource = true;
                 TranslatorVisitor::definitionStreams[i].isOutputSource = false;
-                FileReader fileReader;
-                for (auto const& x : TranslatorVisitor::definitionStreams[i].parameters){
-                    fileReader.createFile(inputSourceName, TranslatorVisitor::definitionStreams[i].parameters);
-                }
+                if(TranslatorVisitor::definitionStreams[i].annotation.getName() == "kafka"){
+                    KafkaConsumer kafkaConsumer;
+                    for (auto const& x : TranslatorVisitor::definitionStreams[i].parameters) {
+                        kafkaConsumer.createFile(x.first);
+                    }
+                    mainFile.include.includes.push_back("KafkaConsumer.cpp");
+                    mainMethod.addLine("Consumer kafkaConsumer;\n");
+                    //consumer.start_consume("test4", "localhost:9092", "test");
+                    mainMethod.addLine("kafkaConsumer.start_consume(\"test4\", \"localhost:9092\", \"test\");");
 
-                mainFile.include.includes.push_back("FileReader.h");
-                mainMethod.addLine("FileReader fileReader;\n");
-                mainMethod.addLine("fileReader.readFileAndFeedData();");
+                }
+                else {
+                    FileReader fileReader;
+                    for (auto const &x : TranslatorVisitor::definitionStreams[i].parameters) {
+                        fileReader.createFile(inputSourceName, TranslatorVisitor::definitionStreams[i].parameters);
+                    }
+
+                    mainFile.include.includes.push_back("FileReader.h");
+                    mainMethod.addLine("FileReader fileReader;\n");
+                    mainMethod.addLine("fileReader.readFileAndFeedData();");
+                }
             }
         }
     }

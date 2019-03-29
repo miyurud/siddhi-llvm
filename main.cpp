@@ -19,6 +19,7 @@ limitations under the License.
 #include "SiddhiqlBaseListener.h"
 #include "Translator.h"
 #include "TranslatorVisitor.h"
+#include "KafkaConsumer.h"
 using namespace antlrcpp;
 using namespace antlr4;
 using namespace std;
