@@ -1,15 +1,3 @@
-/**
-Copyright 2019 Siddhi-LLVM Team
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 
 	//import org.wso2.siddhi.query.compiler.exception.SiddhiParserException;
 
@@ -311,32 +299,8 @@ public:
   virtual void enterExpression(SiddhiqlParser::ExpressionContext *ctx) = 0;
   virtual void exitExpression(SiddhiqlParser::ExpressionContext *ctx) = 0;
 
-  virtual void enterMultiplication_math_operation(SiddhiqlParser::Multiplication_math_operationContext *ctx) = 0;
-  virtual void exitMultiplication_math_operation(SiddhiqlParser::Multiplication_math_operationContext *ctx) = 0;
-
-  virtual void enterGreaterthan_lessthan_math_operation(SiddhiqlParser::Greaterthan_lessthan_math_operationContext *ctx) = 0;
-  virtual void exitGreaterthan_lessthan_math_operation(SiddhiqlParser::Greaterthan_lessthan_math_operationContext *ctx) = 0;
-
-  virtual void enterBasic_math_operation(SiddhiqlParser::Basic_math_operationContext *ctx) = 0;
-  virtual void exitBasic_math_operation(SiddhiqlParser::Basic_math_operationContext *ctx) = 0;
-
-  virtual void enterIn_math_operation(SiddhiqlParser::In_math_operationContext *ctx) = 0;
-  virtual void exitIn_math_operation(SiddhiqlParser::In_math_operationContext *ctx) = 0;
-
-  virtual void enterAddition_math_operation(SiddhiqlParser::Addition_math_operationContext *ctx) = 0;
-  virtual void exitAddition_math_operation(SiddhiqlParser::Addition_math_operationContext *ctx) = 0;
-
-  virtual void enterAnd_math_operation(SiddhiqlParser::And_math_operationContext *ctx) = 0;
-  virtual void exitAnd_math_operation(SiddhiqlParser::And_math_operationContext *ctx) = 0;
-
-  virtual void enterOr_math_operation(SiddhiqlParser::Or_math_operationContext *ctx) = 0;
-  virtual void exitOr_math_operation(SiddhiqlParser::Or_math_operationContext *ctx) = 0;
-
-  virtual void enterEquality_math_operation(SiddhiqlParser::Equality_math_operationContext *ctx) = 0;
-  virtual void exitEquality_math_operation(SiddhiqlParser::Equality_math_operationContext *ctx) = 0;
-
-  virtual void enterNot_math_operation(SiddhiqlParser::Not_math_operationContext *ctx) = 0;
-  virtual void exitNot_math_operation(SiddhiqlParser::Not_math_operationContext *ctx) = 0;
+  virtual void enterMath_operation(SiddhiqlParser::Math_operationContext *ctx) = 0;
+  virtual void exitMath_operation(SiddhiqlParser::Math_operationContext *ctx) = 0;
 
   virtual void enterFunction_operation(SiddhiqlParser::Function_operationContext *ctx) = 0;
   virtual void exitFunction_operation(SiddhiqlParser::Function_operationContext *ctx) = 0;

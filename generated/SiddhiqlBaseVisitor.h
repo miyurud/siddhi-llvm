@@ -1,15 +1,4 @@
-/**
-Copyright 2019 Siddhi-LLVM Team
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
+
 	//import org.wso2.siddhi.query.compiler.exception.SiddhiParserException;
 
 
@@ -50,6 +39,10 @@ public:
   }
 
   virtual antlrcpp::Any visitDefinition_stream(SiddhiqlParser::Definition_streamContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitAttribute_name_type(SiddhiqlParser::Attribute_name_typeContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -405,39 +398,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitMultiplication_math_operation(SiddhiqlParser::Multiplication_math_operationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitGreaterthan_lessthan_math_operation(SiddhiqlParser::Greaterthan_lessthan_math_operationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitBasic_math_operation(SiddhiqlParser::Basic_math_operationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitIn_math_operation(SiddhiqlParser::In_math_operationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitAddition_math_operation(SiddhiqlParser::Addition_math_operationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitAnd_math_operation(SiddhiqlParser::And_math_operationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitOr_math_operation(SiddhiqlParser::Or_math_operationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitEquality_math_operation(SiddhiqlParser::Equality_math_operationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitNot_math_operation(SiddhiqlParser::Not_math_operationContext *ctx) override {
+  virtual antlrcpp::Any visitMath_operation(SiddhiqlParser::Math_operationContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -534,6 +495,14 @@ public:
   }
 
   virtual antlrcpp::Any visitConstant_value(SiddhiqlParser::Constant_valueContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitAs(SiddhiqlParser::AsContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitComma(SiddhiqlParser::CommaContext *ctx) override {
     return visitChildren(ctx);
   }
 

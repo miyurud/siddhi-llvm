@@ -45,7 +45,11 @@ definition_stream_final
     ;
 
 definition_stream
-    : annotation* DEFINE STREAM source '(' attribute_name attribute_type (',' attribute_name attribute_type )* ')'
+    : annotation* DEFINE STREAM source '(' attribute_name_type (',' attribute_name_type )* ')'
+    ;
+
+attribute_name_type
+    : attribute_name attribute_type
     ;
 
 definition_table_final
@@ -76,7 +80,7 @@ store_query
     ;
 
 store_input
-    : source_id (AS alias)? (ON expression)? (within_time_range per)?
+    : source_id (as alias)? (ON expression)? (within_time_range per)?
     ;
 
 definition_function_final
@@ -137,7 +141,7 @@ aggregation_time_range
     ;
 
 aggregation_time_interval
-    :  aggregation_time_duration (COMMA aggregation_time_duration)*
+    :  aggregation_time_duration (comma aggregation_time_duration)*
     ;
 
 annotation
@@ -170,7 +174,7 @@ condition_ranges
     ;
 
 condition_range
-    :expression AS string_value
+    :expression as string_value
     ;
 
 query_final
@@ -194,7 +198,7 @@ join_stream
     ;
 
 join_source
-    :source basic_source_stream_handlers? window? (AS alias)?
+    :source basic_source_stream_handlers? window? (as alias)?
     ;
 
 pattern_stream
@@ -361,7 +365,7 @@ group_by_query_selection
     ;
 
 query_section
-    : (SELECT ('*'| (output_attribute (',' output_attribute)* ))) group_by? having? order_by? limit? offset?
+    : (SELECT ('*'| (output_attribute (comma output_attribute)* ))) group_by? having? order_by? limit? offset?
     ;
 
 group_by
@@ -444,7 +448,7 @@ per :PER expression
     ;
 
 output_attribute
-    :attribute AS attribute_name
+    :attribute as attribute_name
     |attribute_reference
     ;
 
@@ -458,19 +462,19 @@ expression
 
 
 math_operation
-    :'('math_operation')'                         #basic_math_operation
-    |null_check                                   #basic_math_operation
-    |NOT math_operation                           #not_math_operation
-    |math_operation (multiply='*'|devide='/'|mod='%') math_operation    #multiplication_math_operation
-    |math_operation (add='+'|substract='-') math_operation              #addition_math_operation
-    |math_operation (gt_eq='>='|lt_eq='<='|gt='>'|lt='<') math_operation #greaterthan_lessthan_math_operation
-    |math_operation (eq='=='|not_equal='!=') math_operation                #equality_math_operation
-    |math_operation IN name                       #in_math_operation
-    |math_operation AND math_operation            #and_math_operation
-    |math_operation OR math_operation             #or_math_operation
-    |function_operation                           #basic_math_operation
-    |constant_value                               #basic_math_operation
-    |attribute_reference                          #basic_math_operation
+    :'('math_operation')'                         //#basic_math_operation
+    |null_check                                   //#basic_math_operation
+    |NOT math_operation                           //#not_math_operation
+    |math_operation (multiply='*'|devide='/'|mod='%') math_operation    //#multiplication_math_operation
+    |math_operation (add='+'|substract='-') math_operation              //#addition_math_operation
+    |math_operation (gt_eq='>='|lt_eq='<='|gt='>'|lt='<') math_operation //#greaterthan_lessthan_math_operation
+    |math_operation (eq='=='|not_equal='!=') math_operation                //#equality_math_operation
+    |math_operation IN name                       //#in_math_operation
+    |math_operation AND math_operation            //#and_math_operation
+    |math_operation OR math_operation             //#or_math_operation
+    |function_operation                           //#basic_math_operation
+    |constant_value                               //#basic_math_operation
+    |attribute_reference                          //#basic_math_operation
     ;
 
 function_operation
@@ -589,6 +593,10 @@ constant_value
     |time_value
     |string_value
     ;
+
+as : AS;
+
+comma : COMMA;
 
 id: ID_QUOTES|ID ;
 

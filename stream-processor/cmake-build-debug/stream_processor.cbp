@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="stream_processor"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="stream_processor">
+				<Option output="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/stream_processor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/."/>
+					<Add directory="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/math_logic"/>
+					<Add directory="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/temp"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 stream_processor"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="stream_processor/fast">
+				<Option output="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/stream_processor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/."/>
+					<Add directory="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/math_logic"/>
+					<Add directory="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/temp"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 stream_processor/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/Buffer.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/Buffer.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/BufferContainer.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/BufferContainer.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/BufferLocker.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/BufferLocker.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/DetailContainer.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/DetailContainer.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/Executor.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/Executor.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/ExecutorCreator.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/ExecutorCreator.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/InputOutputMapper.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/InputOutputMapper.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/LogicExecution.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/LogicExecution.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/Main.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/OutputEmitter.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/OutputEmitter.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/PerformanceMonitor.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/PerformanceMonitor.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/ProcessedThreadHandler.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/ProcessedThreadHandler.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/common.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/math_logic/Average.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/math_logic/Average.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/math_logic/Sum.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/math_logic/Sum.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/temp/Consumer.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/temp/Consumer.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/temp/Producer.cpp">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/temp/Producer.h">
+			<Option target="stream_processor"/>
+		</Unit>
+		<Unit filename="/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
