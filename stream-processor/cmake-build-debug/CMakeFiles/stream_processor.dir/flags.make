@@ -6,5 +6,5 @@ CXX_FLAGS = -pthread -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/. -I/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/math_logic -I/home/tharsanan/CLionProjects/ProducerConsumer/stream-processor/temp 
+CXX_INCLUDES = -I/home/tharsanan/Tharsanan/FYP/Temp/siddhi-llvm/stream-processor/. -I/home/tharsanan/Tharsanan/FYP/Temp/siddhi-llvm/stream-processor/math_logic -I/home/tharsanan/Tharsanan/FYP/Temp/siddhi-llvm/stream-processor/temp 
 

@@ -1,17 +1,61 @@
 #include "Executor.h"
 Executor::Executor(){
-}Sum<long> Executor::sumWeight2TotalWeight2;
-Sum<long> Executor::sumWeight3TotalWeight3;
-Sum<long> Executor::sumWeight4TotalWeight4;
-void Executor::executeWeight1(int weight1){
-ExecutorCreator::getBufferContainer()->pushWeight1OutputBuffer(weight1);
+}void Executor::executeTotalWeight1(string weight1){
+int count = 0 ; for ( char c : weight1 ) {
+        if(c == 'l'){
+        count ++;
+        }
+    }
+    ExecutorCreator::getBufferContainer()->pushTotalWeight1OutputBuffer( count );
 }
-void Executor::executeTotalWeight2(int weight2){
-ExecutorCreator::getBufferContainer()->pushTotalWeight2OutputBuffer(sumWeight2TotalWeight2.getSum(weight2));
+void Executor::executeTotalWeight2(string weight2){
+int count = 0 ; for ( char c : weight2 ) {
+        if(c == 'l'){
+        count ++;
+        }
+    } ExecutorCreator::getBufferContainer()->pushTotalWeight2OutputBuffer( count ); 
 }
-void Executor::executeTotalWeight3(int weight3){
-ExecutorCreator::getBufferContainer()->pushTotalWeight3OutputBuffer(sumWeight3TotalWeight3.getSum(weight3));
+void Executor::executeTotalWeight3(string weight3){
+int count = 0 ; for ( char c : weight3 ) {
+        if(c == 'l'){
+        count ++;
+        }
+    } ExecutorCreator::getBufferContainer()->pushTotalWeight3OutputBuffer( count ); 
 }
-void Executor::executeTotalWeight4(int weight4){
-ExecutorCreator::getBufferContainer()->pushTotalWeight4OutputBuffer(sumWeight4TotalWeight4.getSum(weight4));
+void Executor::executeTotalWeight4(string weight4){
+int count = 0 ; for ( char c : weight4 ) {
+        if(c == 'l'){
+        count ++;
+        }
+    } ExecutorCreator::getBufferContainer()->pushTotalWeight4OutputBuffer( count ); 
+}
+
+void Executor::executeSync(string weight1, string weight2, string weight3, string weight4) {
+//    PerformanceMonitor::setStart(0);
+    int count = 0 ;
+    for ( char c : weight1 ) {
+        if(c == 'l'){
+            count ++;
+        }
+    }
+//    PerformanceMonitor::getAvgTime(0);
+    int count1 = 0 ;
+    for ( char c : weight2 ) {
+        if(c == 'l'){
+            count1 ++;
+        }
+    }
+    int count3 = 0 ;
+    for ( char c : weight3 ) {
+        if(c == 'l'){
+            count3 ++;
+        }
+    }
+    int count4 = 0 ;
+    for ( char c : weight4 ) {
+        if(c == 'l'){
+            count4 ++;
+        }
+    }
+
 }

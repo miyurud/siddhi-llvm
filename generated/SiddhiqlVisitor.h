@@ -210,6 +210,14 @@ public:
 
     virtual antlrcpp::Any visitAttribute(SiddhiqlParser::AttributeContext *context) = 0;
 
+    virtual antlrcpp::Any visitFunction_string(SiddhiqlParser::Function_stringContext *context) = 0;
+
+    virtual antlrcpp::Any visitParam_string(SiddhiqlParser::Param_stringContext *context) = 0;
+
+    virtual antlrcpp::Any visitExecution_string_area(SiddhiqlParser::Execution_string_areaContext *context) = 0;
+
+    virtual antlrcpp::Any visitExecution_string(SiddhiqlParser::Execution_stringContext *context) = 0;
+
     virtual antlrcpp::Any visitExpression(SiddhiqlParser::ExpressionContext *context) = 0;
 
     virtual antlrcpp::Any visitMath_operation(SiddhiqlParser::Math_operationContext *context) = 0;

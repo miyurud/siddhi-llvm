@@ -448,12 +448,29 @@ per :PER expression
     ;
 
 output_attribute
-    :attribute as attribute_name
+    :function_string as attribute_name
+    |attribute as attribute_name
     |attribute_reference
     ;
 
 attribute
     :math_operation
+    ;
+
+function_string
+    :param_string execution_string_area
+    ;
+
+param_string
+    :'('attribute_name (',' attribute_name)* ')'
+    ;
+
+execution_string_area
+    :'[' execution_string ']'
+    ;
+
+execution_string
+    :.*?
     ;
 
 expression

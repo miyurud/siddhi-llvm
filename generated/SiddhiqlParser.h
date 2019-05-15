@@ -70,20 +70,22 @@ public:
     RuleStore_query_output = 82, RuleSet_clause = 83, RuleSet_assignment = 84, 
     RuleOutput_event_type = 85, RuleOutput_rate = 86, RuleOutput_rate_type = 87, 
     RuleFor_time = 88, RuleWithin_time = 89, RuleWithin_time_range = 90, 
-    RulePer = 91, RuleOutput_attribute = 92, RuleAttribute = 93, RuleExpression = 94, 
-    RuleMath_operation = 95, RuleFunction_operation = 96, RuleAttribute_list = 97, 
-    RuleNull_check = 98, RuleStream_reference = 99, RuleAttribute_reference = 100, 
-    RuleAttribute_index = 101, RuleFunction_id = 102, RuleFunction_namespace = 103, 
-    RuleStream_id = 104, RuleSource_id = 105, RuleAlias = 106, RuleProperty_name = 107, 
-    RuleAttribute_name = 108, RuleType = 109, RuleProperty_value = 110, 
-    RuleProperty_separator = 111, RuleSource = 112, RuleTarget = 113, RuleEvent = 114, 
-    RuleName = 115, RuleCollect = 116, RuleAttribute_type = 117, RuleJoin = 118, 
-    RuleConstant_value = 119, RuleAs = 120, RuleComma = 121, RuleId = 122, 
-    RuleKeyword = 123, RuleTime_value = 124, RuleYear_value = 125, RuleMonth_value = 126, 
-    RuleWeek_value = 127, RuleDay_value = 128, RuleHour_value = 129, RuleMinute_value = 130, 
-    RuleSecond_value = 131, RuleMillisecond_value = 132, RuleSigned_double_value = 133, 
-    RuleSigned_long_value = 134, RuleSigned_float_value = 135, RuleSigned_int_value = 136, 
-    RuleBool_value = 137, RuleString_value = 138
+    RulePer = 91, RuleOutput_attribute = 92, RuleAttribute = 93, RuleFunction_string = 94, 
+    RuleParam_string = 95, RuleExecution_string_area = 96, RuleExecution_string = 97, 
+    RuleExpression = 98, RuleMath_operation = 99, RuleFunction_operation = 100, 
+    RuleAttribute_list = 101, RuleNull_check = 102, RuleStream_reference = 103, 
+    RuleAttribute_reference = 104, RuleAttribute_index = 105, RuleFunction_id = 106, 
+    RuleFunction_namespace = 107, RuleStream_id = 108, RuleSource_id = 109, 
+    RuleAlias = 110, RuleProperty_name = 111, RuleAttribute_name = 112, 
+    RuleType = 113, RuleProperty_value = 114, RuleProperty_separator = 115, 
+    RuleSource = 116, RuleTarget = 117, RuleEvent = 118, RuleName = 119, 
+    RuleCollect = 120, RuleAttribute_type = 121, RuleJoin = 122, RuleConstant_value = 123, 
+    RuleAs = 124, RuleComma = 125, RuleId = 126, RuleKeyword = 127, RuleTime_value = 128, 
+    RuleYear_value = 129, RuleMonth_value = 130, RuleWeek_value = 131, RuleDay_value = 132, 
+    RuleHour_value = 133, RuleMinute_value = 134, RuleSecond_value = 135, 
+    RuleMillisecond_value = 136, RuleSigned_double_value = 137, RuleSigned_long_value = 138, 
+    RuleSigned_float_value = 139, RuleSigned_int_value = 140, RuleBool_value = 141, 
+    RuleString_value = 142
   };
 
   SiddhiqlParser(antlr4::TokenStream *input);
@@ -190,6 +192,10 @@ public:
   class PerContext;
   class Output_attributeContext;
   class AttributeContext;
+  class Function_stringContext;
+  class Param_stringContext;
+  class Execution_string_areaContext;
+  class Execution_stringContext;
   class ExpressionContext;
   class Math_operationContext;
   class Function_operationContext;
@@ -1650,9 +1656,10 @@ public:
   public:
     Output_attributeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    AttributeContext *attribute();
+    Function_stringContext *function_string();
     AsContext *as();
     Attribute_nameContext *attribute_name();
+    AttributeContext *attribute();
     Attribute_referenceContext *attribute_reference();
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -1672,6 +1679,55 @@ public:
   };
 
   AttributeContext* attribute();
+
+  class  Function_stringContext : public antlr4::ParserRuleContext {
+  public:
+    Function_stringContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Param_stringContext *param_string();
+    Execution_string_areaContext *execution_string_area();
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Function_stringContext* function_string();
+
+  class  Param_stringContext : public antlr4::ParserRuleContext {
+  public:
+    Param_stringContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    std::vector<Attribute_nameContext *> attribute_name();
+    Attribute_nameContext* attribute_name(size_t i);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Param_stringContext* param_string();
+
+  class  Execution_string_areaContext : public antlr4::ParserRuleContext {
+  public:
+    Execution_string_areaContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Execution_stringContext *execution_string();
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Execution_string_areaContext* execution_string_area();
+
+  class  Execution_stringContext : public antlr4::ParserRuleContext {
+  public:
+    Execution_stringContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Execution_stringContext* execution_string();
 
   class  ExpressionContext : public antlr4::ParserRuleContext {
   public:

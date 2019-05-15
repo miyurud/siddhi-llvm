@@ -394,6 +394,22 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitFunction_string(SiddhiqlParser::Function_stringContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitParam_string(SiddhiqlParser::Param_stringContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExecution_string_area(SiddhiqlParser::Execution_string_areaContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExecution_string(SiddhiqlParser::Execution_stringContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitExpression(SiddhiqlParser::ExpressionContext *ctx) override {
     return visitChildren(ctx);
   }

@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/stream_processor.dir/PerformanceMonitor.cpp.o"
   "CMakeFiles/stream_processor.dir/ProcessedThreadHandler.cpp.o"
   "CMakeFiles/stream_processor.dir/Main.cpp.o"
+  "CMakeFiles/stream_processor.dir/WindowBufferContainer.cpp.o"
   "stream_processor.pdb"
   "stream_processor"
 )

@@ -1,11 +1,47 @@
 @App:name("CargoWeightApp")
 
-define stream CargoStream (weight1 int, weight2 int, weight3 int, weight4 int);
+define stream CargoStream (weight1 string, weight2 string, weight3 string, weight4 string);
 
 @sink(type='log', prefix='LOGGER')
-define stream OutputStream(weight1 int, totalWeight2 long, totalWeight3 long, totalWeight4 long);
+define stream OutputStream(totalWeight1 int, totalWeight2 int, totalWeight3 int, totalWeight4 int);
 
 @info(name='CargoWeightQuery')
 from CargoStream
-select weight1, sum(weight2) as totalWeight2, sum(weight3) as totalWeight3, sum(weight4) as totalWeight4
+select
+(weight1)[
+    int count = 0;
+    for(char c : weight1){
+        if(c == 'l'){
+        count ++;
+        }
+    }
+    return count;
+] as totalWeight1,
+(weight2)[
+    int count = 0;
+    for(char c : weight2){
+        if(c == 'l'){
+        count ++;
+        }
+    }
+    return count;
+] as totalWeight2,
+(weight3)[
+    int count = 0;
+    for(char c : weight3){
+        if(c == 'l'){
+        count ++;
+        }
+    }
+    return count;
+] as totalWeight3,
+(weight4)[
+    int count = 0;
+    for(char c : weight4){
+        if(c == 'l'){
+        count ++;
+        }
+    }
+    return count;
+] as totalWeight4
 insert into OutputStream;

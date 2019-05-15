@@ -43,7 +43,7 @@ public:
     vector<string> created_attribute_refs;
     vector<InputOutputMapper> IOMapperList;
     void prepareLogicParts(InputOutputMapper* inputOutputMapper, SiddhiqlParser::AttributeContext *ctx);
-
+    string prepareExecutionString(vector<antlr4::tree::ParseTree*> nodes_to_visit);
 };
 
 

@@ -58,9 +58,17 @@ void ExecutionElement::executeQuery_section(SiddhiqlParser::Query_sectionContext
 void ExecutionElement::createIOMapper(SiddhiqlParser::Query_sectionContext *ctx){
     for (int i = 0; i < ctx->output_attribute().size(); ++i) {
         InputOutputMapper inputOutputMapper;
+
         if(ctx->output_attribute(i)->attribute_reference()){ //just a pass through.
             inputOutputMapper.addLogicPart(ctx->output_attribute(i)->attribute_reference()->getText());
             inputOutputMapper.setOutput(ctx->output_attribute(i)->attribute_reference()->getText());
+        }
+        else if(ctx->output_attribute(i)->function_string()){
+            inputOutputMapper.setFunctionStringFlag(true);
+            inputOutputMapper.setFunctionExecutionString(prepareExecutionString(ctx->output_attribute(i)->function_string()->execution_string_area()->execution_string()->children));
+            inputOutputMapper.addLogicPart(ctx->output_attribute(i)->function_string()->param_string()->getText() + "{"
+            + prepareExecutionString(ctx->output_attribute(i)->function_string()->execution_string_area()->execution_string()->children) + "}");
+            inputOutputMapper.setOutput(ctx->output_attribute(i)->attribute_name()->getText());
         }
         else{  // can be a math function.
             prepareLogicParts(&inputOutputMapper, ctx->output_attribute(i)->attribute());
@@ -89,3 +97,12 @@ void ExecutionElement::prepareLogicParts(InputOutputMapper* inputOutputMapper, S
     }
     //do something
 }
+
+string ExecutionElement::prepareExecutionString(vector<antlr4::tree::ParseTree *> nodes_to_visit) {
+    string executionString = "";
+    for (int i = 0; i < nodes_to_visit.size(); ++i) {
+        executionString += nodes_to_visit[i]->getText() + " ";
+    }
+    return executionString;
+}
+

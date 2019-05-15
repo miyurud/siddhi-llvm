@@ -29,15 +29,22 @@ private:
     vector<string> dependOnList;
     string output;
     vector<string> logicParts;
+    bool functionStringFlag;
+    string functionExecutionString;
 public:
+    InputOutputMapper();
     void addToDependOn(string input);
     vector<string> getDependList();
     void setOutput(string outputM);
     string getOutput();
     void addLogicPart(string logicM);
-    string getLogicString();
+    void getLogicString();
     bool contains(string* ptr, string value, int len);
     std::string makeFirstCapital(std::string s);
+    void setFunctionStringFlag(bool value);
+    string prepareFunctionString(string functionString, string pushString);
+    void setFunctionExecutionString(string value);
+
 };
 
 

@@ -8,7 +8,6 @@ CMakeFiles/stream_processor.dir/Buffer.cpp.o: ../DetailContainer.h
 CMakeFiles/stream_processor.dir/Buffer.cpp.o: ../ProcessedThreadHandler.h
 CMakeFiles/stream_processor.dir/Buffer.cpp.o: ../common.h
 
-CMakeFiles/stream_processor.dir/BufferContainer.cpp.o: ../math_logic/Sum.h
 CMakeFiles/stream_processor.dir/BufferContainer.cpp.o: ../Buffer.h
 CMakeFiles/stream_processor.dir/BufferContainer.cpp.o: ../BufferContainer.cpp
 CMakeFiles/stream_processor.dir/BufferContainer.cpp.o: ../BufferContainer.h
@@ -31,7 +30,6 @@ CMakeFiles/stream_processor.dir/DetailContainer.cpp.o: ../DetailContainer.cpp
 CMakeFiles/stream_processor.dir/DetailContainer.cpp.o: ../DetailContainer.h
 CMakeFiles/stream_processor.dir/DetailContainer.cpp.o: ../common.h
 
-CMakeFiles/stream_processor.dir/Executor.cpp.o: ../math_logic/Sum.h
 CMakeFiles/stream_processor.dir/Executor.cpp.o: ../Buffer.h
 CMakeFiles/stream_processor.dir/Executor.cpp.o: ../BufferContainer.h
 CMakeFiles/stream_processor.dir/Executor.cpp.o: ../BufferLocker.h
@@ -44,7 +42,6 @@ CMakeFiles/stream_processor.dir/Executor.cpp.o: ../PerformanceMonitor.h
 CMakeFiles/stream_processor.dir/Executor.cpp.o: ../ProcessedThreadHandler.h
 CMakeFiles/stream_processor.dir/Executor.cpp.o: ../common.h
 
-CMakeFiles/stream_processor.dir/ExecutorCreator.cpp.o: ../math_logic/Sum.h
 CMakeFiles/stream_processor.dir/ExecutorCreator.cpp.o: ../Buffer.h
 CMakeFiles/stream_processor.dir/ExecutorCreator.cpp.o: ../BufferContainer.h
 CMakeFiles/stream_processor.dir/ExecutorCreator.cpp.o: ../BufferLocker.h
@@ -63,7 +60,6 @@ CMakeFiles/stream_processor.dir/InputOutputMapper.cpp.o: ../InputOutputMapper.h
 CMakeFiles/stream_processor.dir/LogicExecution.cpp.o: ../LogicExecution.cpp
 CMakeFiles/stream_processor.dir/LogicExecution.cpp.o: ../LogicExecution.h
 
-CMakeFiles/stream_processor.dir/Main.cpp.o: ../math_logic/Sum.h
 CMakeFiles/stream_processor.dir/Main.cpp.o: ../Buffer.h
 CMakeFiles/stream_processor.dir/Main.cpp.o: ../BufferContainer.h
 CMakeFiles/stream_processor.dir/Main.cpp.o: ../BufferLocker.h
@@ -76,7 +72,6 @@ CMakeFiles/stream_processor.dir/Main.cpp.o: ../PerformanceMonitor.h
 CMakeFiles/stream_processor.dir/Main.cpp.o: ../ProcessedThreadHandler.h
 CMakeFiles/stream_processor.dir/Main.cpp.o: ../common.h
 
-CMakeFiles/stream_processor.dir/OutputEmitter.cpp.o: ../math_logic/Sum.h
 CMakeFiles/stream_processor.dir/OutputEmitter.cpp.o: ../Buffer.h
 CMakeFiles/stream_processor.dir/OutputEmitter.cpp.o: ../BufferContainer.h
 CMakeFiles/stream_processor.dir/OutputEmitter.cpp.o: ../BufferLocker.h
@@ -96,9 +91,18 @@ CMakeFiles/stream_processor.dir/ProcessedThreadHandler.cpp.o: ../ProcessedThread
 CMakeFiles/stream_processor.dir/ProcessedThreadHandler.cpp.o: ../ProcessedThreadHandler.h
 CMakeFiles/stream_processor.dir/ProcessedThreadHandler.cpp.o: ../common.h
 
+CMakeFiles/stream_processor.dir/WindowBufferContainer.cpp.o: ../Buffer.h
+CMakeFiles/stream_processor.dir/WindowBufferContainer.cpp.o: ../BufferLocker.h
+CMakeFiles/stream_processor.dir/WindowBufferContainer.cpp.o: ../DetailContainer.h
+CMakeFiles/stream_processor.dir/WindowBufferContainer.cpp.o: ../ProcessedThreadHandler.h
+CMakeFiles/stream_processor.dir/WindowBufferContainer.cpp.o: ../WindowBufferContainer.cpp
+CMakeFiles/stream_processor.dir/WindowBufferContainer.cpp.o: ../WindowBufferContainer.h
+CMakeFiles/stream_processor.dir/WindowBufferContainer.cpp.o: ../common.h
+
 CMakeFiles/stream_processor.dir/math_logic/Average.cpp.o: ../math_logic/Average.cpp
 CMakeFiles/stream_processor.dir/math_logic/Average.cpp.o: ../math_logic/Average.h
 
+CMakeFiles/stream_processor.dir/math_logic/Sum.cpp.o: .././PerformanceMonitor.h
 CMakeFiles/stream_processor.dir/math_logic/Sum.cpp.o: ../math_logic/Sum.cpp
 CMakeFiles/stream_processor.dir/math_logic/Sum.cpp.o: ../math_logic/Sum.h
 

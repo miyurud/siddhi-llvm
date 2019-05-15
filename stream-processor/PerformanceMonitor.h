@@ -12,9 +12,12 @@ using namespace std;
 class PerformanceMonitor {
 private:
     static chrono::system_clock::time_point start;
+    static int count;
+    static long avgTimeNano;
 public:
-    static void setStart();
-    static void getElapsedTime();
+    static void setStart(int val);
+    static void getElapsedTime(int val);
+    static void getAvgTime(int out);
 };
 
 

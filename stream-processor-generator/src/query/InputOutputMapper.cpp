@@ -39,43 +39,50 @@ void InputOutputMapper::addLogicPart(string logicM) {
     logicParts.push_back(logicM);
 }
 
-string InputOutputMapper::getLogicString(){
-    if(logicParts.empty()){
-        return "";
-    }
-    else{
-        string temp = "";
-        string array[3] = {"sum", "average"};
-        for (int i = 0; i < logicParts.size(); ++i) {
-            if(contains(array, logicParts[i], 2)){
-                ArithmaticExecutorGenerator::addInclude(makeFirstCapital(logicParts[i] + ".h"));
+void InputOutputMapper::getLogicString(){
+    if(!logicParts.empty()){
+        if(functionStringFlag){
+            Method tempMethod;
+            tempMethod.isStatic = true;
+            tempMethod.identifier = "execute" + makeFirstCapital(output);
+            tempMethod.returnType = "void";
+            tempMethod.addLine(prepareFunctionString(functionExecutionString, ("ExecutorCreator::getBufferContainer()->push" + makeFirstCapital(output) + "OutputBuffer(")));
 
-                Variable tempVar;
-                tempVar.identifier = logicParts[i] + makeFirstCapital(logicParts[i+2]) + makeFirstCapital(output);
-                tempVar.isStatic = true;
-                tempVar.shoulInit = false;
-                tempVar.dataType = makeFirstCapital(logicParts[i])+ "<" + AttributeTypeMapper::getTypeForOutputAttribute((output)) + ">";
-                tempVar.isStatic = true;
-                ArithmaticExecutorGenerator::addVariable(tempVar);
 
-                logicParts[i] = logicParts[i] + makeFirstCapital(logicParts[i+2]) + makeFirstCapital(output) + ".get" + makeFirstCapital(logicParts[i]);
+            ArithmaticExecutorGenerator::addMethod(tempMethod);
+        }else {
+            string temp = "";
+            string array[3] = {"sum", "average"};
+            for (int i = 0; i < logicParts.size(); ++i) {
+                if(contains(array, logicParts[i], 2)){
+                    ArithmaticExecutorGenerator::addInclude(makeFirstCapital(logicParts[i] + ".h"));
 
+                    Variable tempVar;
+                    tempVar.identifier = logicParts[i] + makeFirstCapital(logicParts[i+2]) + makeFirstCapital(output);
+                    tempVar.isStatic = true;
+                    tempVar.shoulInit = false;
+                    tempVar.dataType = makeFirstCapital(logicParts[i])+ "<" + AttributeTypeMapper::getTypeForOutputAttribute((output)) + ">";
+                    tempVar.isStatic = true;
+                    ArithmaticExecutorGenerator::addVariable(tempVar);
+
+                    logicParts[i] = logicParts[i] + makeFirstCapital(logicParts[i+2]) + makeFirstCapital(output) + ".get" + makeFirstCapital(logicParts[i]);
+
+                }
             }
+
+            for (int i = 0; i < logicParts.size(); ++i) {
+                temp += logicParts[i];
+            }
+            Method tempMethod;
+            tempMethod.isStatic = true;
+            tempMethod.identifier = "execute" + makeFirstCapital(output);
+            tempMethod.returnType = "void";
+            tempMethod.addLine(
+                    "ExecutorCreator::getBufferContainer()->push" + makeFirstCapital(output) + "OutputBuffer(" + temp +
+                    ");");
+
+            ArithmaticExecutorGenerator::addMethod(tempMethod);
         }
-
-        for (int i = 0; i < logicParts.size(); ++i) {
-            temp += logicParts[i];
-        }
-
-        Method tempMethod;
-        tempMethod.isStatic = true;
-        tempMethod.identifier = "execute" + makeFirstCapital(output);
-        tempMethod.returnType = "void";
-        tempMethod.addLine("ExecutorCreator::getBufferContainer()->push"+makeFirstCapital(output)+"OutputBuffer("+ temp +");");
-
-        ArithmaticExecutorGenerator::addMethod(tempMethod);
-
-        return temp;
     }
 }
 
@@ -98,3 +105,34 @@ std::string InputOutputMapper::makeFirstCapital(std::string s) {
 
 
 }
+
+void InputOutputMapper::setFunctionStringFlag(bool value) {
+    functionStringFlag = value;
+}
+
+InputOutputMapper::InputOutputMapper() {
+    functionStringFlag = false;
+}
+
+string InputOutputMapper::prepareFunctionString(string functionString, string pushString) {
+    string returnString = "return";
+    string semicolon = ";";
+    std::size_t foundReturn = functionString.find(returnString);
+    std::size_t foundSemicolon = functionString.find(semicolon, foundReturn + 1);
+    string preparedString = "";
+    while (foundReturn != std::string::npos){
+        foundSemicolon = functionString.find(semicolon, foundReturn + 1);
+        preparedString += functionString.substr(0, foundReturn);
+        preparedString += pushString;
+        string temp = functionString.substr((foundReturn + 6), (foundSemicolon - foundReturn - 6));
+        preparedString += temp + ");";
+        foundReturn = functionString.find(returnString, foundReturn + 1);
+    }
+    preparedString += functionString.substr(foundSemicolon+1, (functionString.size() - foundSemicolon - 1));
+    return preparedString;
+}
+
+void InputOutputMapper::setFunctionExecutionString(string value) {
+    functionExecutionString = value;
+}
+

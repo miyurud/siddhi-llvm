@@ -40,4 +40,6 @@ add_executable(stream_processor
         PerformanceMonitor.cpp
         PerformanceMonitor.h
         ProcessedThreadHandler.cpp
-        Main.cpp)
+        Main.cpp
+        WindowBufferContainer.cpp
+        WindowBufferContainer.h)

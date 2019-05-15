@@ -5,6 +5,12 @@
 #ifndef STREAM_PROCESSOR_SUM_H
 #define STREAM_PROCESSOR_SUM_H
 
+#include <zconf.h>
+#include <thread>
+#include <PerformanceMonitor.h>
+#include "chrono"
+
+
 template <class T>
 class Sum {
 private:
