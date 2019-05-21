@@ -1,0 +1,5 @@
+Server 	: clang++ Server.cpp KeyValue.cpp Mapping.cpp -o Server.out
+
+CLient 	:  clang++ Client.cpp -o Client.out
+
+
