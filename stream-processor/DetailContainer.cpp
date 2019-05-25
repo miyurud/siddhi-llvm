@@ -1,8 +1,8 @@
 #include "DetailContainer.h"
 DetailContainer::DetailContainer(){
-}int DetailContainer::numberOfOutputAttributes = 4;
-int DetailContainer::inputAttributeCount = 4;
-int DetailContainer::consumerCountForInput[] = {1,1,1,1};
+}int DetailContainer::numberOfOutputAttributes = 1;
+int DetailContainer::inputAttributeCount = 1;
+int DetailContainer::consumerCountForInput[] = {1};
 bool DetailContainer::executionFlag = true;
 void DetailContainer::setExecutionFlag(bool value){
 executionFlag = value;

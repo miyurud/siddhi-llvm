@@ -131,3 +131,52 @@ int main ( int argc, const char *args[]){
 //from CargoStream
 //select weight1
 //insert into OutputStream;
+
+
+//@App:name("CargoWeightApp")
+//
+//define stream CargoStream (weight1 string, weight2 string, weight3 string, weight4 string);
+//
+//@sink(type='log', prefix='LOGGER')
+//define stream OutputStream(totalWeight1 int, totalWeight2 int, totalWeight3 int, totalWeight4 int);
+//
+//@info(name='CargoWeightQuery')
+//from CargoStream
+//select
+//(weight1)[
+//        int count = 0;
+//for(char c : weight1){
+//if(c == 'l'){
+//count ++;
+//}
+//}
+//return count;
+//] as totalWeight1,
+//(weight2)[
+//        int count = 0;
+//for(char c : weight2){
+//if(c == 'l'){
+//count ++;
+//}
+//}
+//return count;
+//] as totalWeight2,
+//(weight3)[
+//        int count = 0;
+//for(char c : weight3){
+//if(c == 'l'){
+//count ++;
+//}
+//}
+//return count;
+//] as totalWeight3,
+//(weight4)[
+//        int count = 0;
+//for(char c : weight4){
+//if(c == 'l'){
+//count ++;
+//}
+//}
+//return count;
+//] as totalWeight4
+//insert into OutputStream;

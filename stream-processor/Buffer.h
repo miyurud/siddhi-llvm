@@ -30,11 +30,13 @@ public:
     T front();
     T pop();
     void push(T const&);
+    long max;
 };
 
 template <class T>
 Buffer<T>::Buffer(){
     bufferQueue = new queue<T>();
+    max = 0;
 }
 
 template <class T>
@@ -80,6 +82,9 @@ void Buffer<T>::push(T const& value){
 
     bufferQueue->push(value);
     locker.unlock();
+    if(max < this->bufferQueue->size()){
+        max = this->bufferQueue->size();
+    }
 //    m_condVar.notify_one();
 }
 

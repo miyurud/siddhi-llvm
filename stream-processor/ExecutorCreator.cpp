@@ -15,11 +15,16 @@ void ExecutorCreator::run(int consumerIndex){
     }
 }
 //
-//void ExecutorCreator::tempFunc(){
+void ExecutorCreator::tempFunc(){
+PerformanceMonitor::setStart(0);
+    for (int i = 0; i < 100000; ++i) {
+        bufferContainer->pushWeight1Buffer(i);
+    }
+    PerformanceMonitor::getElapsedTime(0);
 //    PerformanceMonitor::getAvgTime(0);
 //    string s1 = "ll";
 //
-//    string s = "hiiiiiiiiiiiii";
+//    string s = "hilllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiipppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp";
 //        for (int j = 0; j < 100000; ++j) {
 //            if (j == 99999) {
 ////                PerformanceMonitor::setStart(0);
@@ -45,44 +50,52 @@ void ExecutorCreator::run(int consumerIndex){
 //                //PerformanceMonitor::getAvgTime();
 //            }
 //        }
+//        cout << "max 1 : " << bufferContainer->weight1Buffer.max << "\n";
+//    cout << "max 2 : " << bufferContainer->weight2Buffer.max << "\n";
+//    cout << "max 3 : " << bufferContainer->weight3Buffer.max << "\n";
+//    cout << "max 4 : " << bufferContainer->weight4Buffer.max << "\n";
+//    cout << "max 1 : " << bufferContainer->totalWeight1OutputBuffer.max << "\n";
+//    cout << "max 2 : " << bufferContainer->totalWeight2OutputBuffer.max << "\n";
+//    cout << "max 3 : " << bufferContainer->totalWeight3OutputBuffer.max << "\n";
+//    cout << "max 4 : " << bufferContainer->totalWeight4OutputBuffer.max << "\n";
 ////        PerformanceMonitor::getElapsedTime(2);
-//}
+}
 
 //hilllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiipppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
-//void ExecutorCreator::createThreads(ExecutorCreator* executorCreator){
-//    bufferContainer = new BufferContainer();
-//    thread t[numberOfOutputAttributes];
-//    for (int i = 0; i < numberOfOutputAttributes; ++i) {
-//        t[i] = std::thread(&ExecutorCreator::run, executorCreator, i);
-//    }
-//    thread th = thread(&ExecutorCreator::tempFunc, executorCreator);
-//    thread outputThread = thread(&ExecutorCreator::outputThreadFunc,executorCreator);
-//    for (int i = 0; i < numberOfOutputAttributes; ++i) {
-//        t[i].join();
-//    }
-//    th.join();
-//    outputThread.join();
-//    delete bufferContainer;
-//}
-
-void ExecutorCreator::tempFunc(){
-    PerformanceMonitor::getAvgTime(0);
-    string s = "hiiiiiiiii";
-    for (int j = 0; j < 100000; ++j) {
-        Executor::executeSync(s,s,s,s);
-//        PerformanceMonitor::getAvgTime(0);
-    }
-    PerformanceMonitor::getElapsedTime(2);
-
-}
-
 void ExecutorCreator::createThreads(ExecutorCreator* executorCreator){
     bufferContainer = new BufferContainer();
+    thread t[numberOfOutputAttributes];
+    for (int i = 0; i < numberOfOutputAttributes; ++i) {
+        t[i] = std::thread(&ExecutorCreator::run, executorCreator, i);
+    }
     thread th = thread(&ExecutorCreator::tempFunc, executorCreator);
+    thread outputThread = thread(&ExecutorCreator::outputThreadFunc,executorCreator);
+    for (int i = 0; i < numberOfOutputAttributes; ++i) {
+        t[i].join();
+    }
     th.join();
+    outputThread.join();
     delete bufferContainer;
-
 }
+
+//void ExecutorCreator::tempFunc(){
+//    PerformanceMonitor::getAvgTime(0);
+//    string s = "hiiiiiiiii";
+//    for (int j = 0; j < 100000; ++j) {
+//        Executor::executeSync(s,s,s,s);
+////        PerformanceMonitor::getAvgTime(0);
+//    }
+//    PerformanceMonitor::getElapsedTime(2);
+//
+//}
+//
+//void ExecutorCreator::createThreads(ExecutorCreator* executorCreator){
+//    bufferContainer = new BufferContainer();
+//    thread th = thread(&ExecutorCreator::tempFunc, executorCreator);
+//    th.join();
+//    delete bufferContainer;
+//
+//}
 
 
 
