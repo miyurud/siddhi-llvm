@@ -49,7 +49,11 @@ definition_stream
     ;
 
 attribute_name_type
-    : attribute_name attribute_type
+    : (attribute_name attribute_type) | (attribute_name attribute_type attribute_annotation)
+    ;
+
+attribute_annotation
+    : ATTRIBUTE_ANNOTATION
     ;
 
 definition_table_final
@@ -875,6 +879,8 @@ PER:      P E R;
 ID_QUOTES : '`'[a-zA-Z_] [a-zA-Z_0-9]*'`' ;
 
 ID : [a-zA-Z_] [a-zA-Z_0-9]* ;
+
+ATTRIBUTE_ANNOTATION : [@][a-zA-Z_] [a-zA-Z_ 0-9]*;
 
 STRING_LITERAL
     :(

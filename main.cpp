@@ -34,7 +34,7 @@ using namespace std;
 
 int main ( int argc, const char *args[]){
     ifstream stream1;
-    stream1.open("/home/tharsanan/Tharsanan/FYP/Temp/siddhi-llvm/sample.exec");
+    stream1.open("/home/tharsanan/FYP/siddhi-llvm/sample.exec");
     ANTLRInputStream input1(stream1);
     SiddhiqlLexer lexer1(&input1);
     CommonTokenStream tokens1(&lexer1);

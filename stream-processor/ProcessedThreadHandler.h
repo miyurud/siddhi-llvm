@@ -9,7 +9,8 @@ ProcessedThreadHandler();
 	static void setAllDefault(int  inputIndex);
 	static void setValueForInputAndConsumer(bool value,int consumerIndex,int  inputIndex);
 	static bool getValueForInputAndConsumer(int consumerIndex,int  inputIndex);
-	static bool boolArrayWeight1[1];
+	static bool boolArrayWeight1[2];
+	static bool boolArrayWeight2[1];
 };
 
 #endif

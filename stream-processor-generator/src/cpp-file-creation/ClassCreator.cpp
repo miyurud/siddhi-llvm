@@ -12,6 +12,7 @@ limitations under the License.
 */
 
 #include <fstream>
+#include <iostream>
 #include "ClassCreator.h"
 
 string ClassCreator::projectName = "STREAM_PROCESSOR";
@@ -96,7 +97,8 @@ string ClassCreator::createHeaderSource(){
 }
 
 void ClassCreator::createHeaderFile(){
-    ofstream headerFile("/home/tharsanan/Tharsanan/FYP/Temp/siddhi-llvm/stream-processor/" + className + ".h");
+    std::cout << "\ncreating header file : " << className;
+    ofstream headerFile("/home/tharsanan/FYP/siddhi-llvm/stream-processor/" + className + ".h");
     headerFile << headerSrc;
     headerFile.close();
 }
@@ -169,7 +171,8 @@ string ClassCreator::createCppSource() {
 }
 
 void ClassCreator::createCppFile(){
-    ofstream headerFile1("/home/tharsanan/Tharsanan/FYP/Temp/siddhi-llvm/stream-processor/" + className + ".cpp");
+    std::cout << "\ncreating cpp file : " << className;
+    ofstream headerFile1("/home/tharsanan/FYP/siddhi-llvm/stream-processor/" + className + ".cpp");
     headerFile1 << cppSrc;
     headerFile1.close();
 }
